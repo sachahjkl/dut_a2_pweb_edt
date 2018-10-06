@@ -4,11 +4,11 @@ function choix (){
 	require("./Vue/choix_type_util/choix.tpl");
 }
 
-function etudiant(){
-	require("./Vue/choix_type_util/etudiant.tpl");
+function connect_etu(){
+	require("./Vue/choix_type_util/connect_etu.tpl");
 }
 
-function professeur(){
-	require("./Vue/choix_type_util/professeur.tpl");
+function connect_prof(){
+	require("./Vue/choix_type_util/connect_prof.tpl");
 }
 ?>
