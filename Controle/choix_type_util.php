@@ -20,12 +20,12 @@ $msg='';
 if  (!isset($_POST['login']) && !isset($_POST['pwd']))
 	require('./Vue/choix_type_util/connect_'.$type.'.tpl');
 else {
-	$login =$_POST['login'];
-	$pwd=$_POST['pwd'];
+//	$login =$_POST['login'];
+//	$pwd=$_POST['pwd'];
 		$profil = array(); //profil affecté par l'appel à verif_ident
 		require('./Modele/connect_'.$type.'BD.php') ;
 		if  (!check_profile($login,$pwd,$profil)) {
-			$msg ="erreur de saisie";
+			$msg ="erreur de saisie.";
 			require('./Vue/choix_type_util/connect_'.$type.'.tpl');
 		}
 		else  { 

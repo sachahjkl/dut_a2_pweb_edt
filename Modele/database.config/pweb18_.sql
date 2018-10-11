@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Octobre 2018 à 12:09
+-- Généré le :  Mar 09 Octobre 2018 à 18:13
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -17,8 +17,102 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `pweb18`
+-- Base de données :  `pweb18_`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contrainte`
+--
+
+CREATE TABLE IF NOT EXISTS `contrainte` (
+  `id_cont` int(11) NOT NULL,
+  `id_mat` int(11) DEFAULT NULL,
+  `id_prof` int(11) DEFAULT NULL,
+  `id_salle` int(11) DEFAULT NULL,
+  `type` int(11) NOT NULL,
+  `valeur` text NOT NULL,
+  `label` int(11) DEFAULT NULL,
+  KEY `id_cont` (`id_cont`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `contrainte`
+--
+
+INSERT INTO `contrainte` (`id_cont`, `id_mat`, `id_prof`, `id_salle`, `type`, `valeur`, `label`) VALUES
+(5, 5, 5, 5, 4, 'è', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `creneau`
+--
+
+CREATE TABLE IF NOT EXISTS `creneau` (
+  `id_creneau` int(11) NOT NULL AUTO_INCREMENT,
+  `tDeb` int(11) NOT NULL,
+  `tFin` int(11) NOT NULL,
+  `id_edth` int(11) NOT NULL,
+  `id_mat` int(11) NOT NULL,
+  `id_prof` int(11) NOT NULL,
+  `id_grpe` int(11) NOT NULL,
+  `id_salle` int(11) NOT NULL,
+  PRIMARY KEY (`id_creneau`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `creneau`
+--
+
+INSERT INTO `creneau` (`id_creneau`, `tDeb`, `tFin`, `id_edth`, `id_mat`, `id_prof`, `id_grpe`, `id_salle`) VALUES
+(1, 1539604800, 1539615600, 6, 17, 5, 11, 7),
+(2, 1539640800, 1539678600, 6, 14, 9, 4, 8),
+(3, 1539727200, 1539765000, 6, 16, 6, 11, 9),
+(4, 1539777600, 1539788400, 6, 9, 4, 11, 10),
+(5, 1539604800, 1539615600, 6, 1, 2, 10, 11),
+(6, 1539640800, 1539680400, 6, 1, 2, 9, 11),
+(7, 1539727200, 1539766800, 6, 1, 2, 12, 1),
+(8, 1539777600, 1539788400, 6, 1, 2, 11, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `edth`
+--
+
+CREATE TABLE IF NOT EXISTS `edth` (
+  `id_edth` int(11) NOT NULL AUTO_INCREMENT,
+  `id_period` int(11) NOT NULL,
+  `id_promo` int(11) NOT NULL,
+  `tDeb` int(11) NOT NULL,
+  `label` text NOT NULL,
+  `bCourant` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id_edth`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Contenu de la table `edth`
+--
+
+INSERT INTO `edth` (`id_edth`, `id_period`, `id_promo`, `tDeb`, `label`, `bCourant`) VALUES
+(1, 1, 1, 1536530400, '1', 1),
+(2, 1, 1, 1537135200, '2', 1),
+(3, 1, 1, 1537999200, '3', 1),
+(4, 1, 1, 1538344800, '4', 1),
+(5, 1, 1, 1538949600, '5', 1),
+(6, 1, 1, 1539554400, '6', 1),
+(7, 1, 1, 1540159200, '7', 1),
+(8, 1, 1, 1541372400, 'DST C', 1),
+(9, 2, 1, 1541977200, '1', 1),
+(10, 2, 1, 1542582000, '2', 1),
+(11, 2, 1, 1543186800, '3', 1),
+(12, 2, 1, 1543791600, '4', 1),
+(13, 2, 1, 1544396400, '5', 1),
+(14, 2, 1, 1545001200, '6', 1),
+(15, 2, 1, 1546815600, '7', 1),
+(16, 2, 1, 1547420400, 'DST D', 1);
 
 -- --------------------------------------------------------
 
@@ -114,6 +208,34 @@ INSERT INTO `formation` (`id_form`, `nom`, `label`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `gerant`
+--
+
+CREATE TABLE IF NOT EXISTS `gerant` (
+  `id_resp` int(11) NOT NULL AUTO_INCREMENT,
+  `objet` text NOT NULL,
+  `id_objet` int(11) NOT NULL,
+  `id_gerant` int(11) NOT NULL,
+  `label` text NOT NULL,
+  PRIMARY KEY (`id_resp`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+
+--
+-- Contenu de la table `gerant`
+--
+
+INSERT INTO `gerant` (`id_resp`, `objet`, `id_objet`, `id_gerant`, `label`) VALUES
+(1, 'edt', 1, 8, 'Responsable EDT - DUT 1 DUT 2'),
+(6, 'matiere', 1, 2, 'Responsable PWEB'),
+(7, 'matiere', 9, 4, 'Responsable AAV'),
+(8, 'matiere', 14, 9, 'Responsable ANG'),
+(9, 'matiere', 10, 7, 'Responsable EC'),
+(10, 'matiere', 16, 6, 'Responsable MO'),
+(12, 'matiere', 17, 1, 'Responsable PROBA STAT');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `groupe`
 --
 
@@ -158,20 +280,44 @@ CREATE TABLE IF NOT EXISTS `matiere` (
   `label` text NOT NULL,
   `themes` text NOT NULL,
   `typeEns` text NOT NULL,
-  `bEDT` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_mat`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `matiere`
 --
 
-INSERT INTO `matiere` (`id_mat`, `id_form`, `nom`, `label`, `themes`, `typeEns`, `bEDT`) VALUES
-(1, 1, 'Programmation WEB côté Serveur (M3104)', 'PWEB', '{\n''web'':''Client Serveur HTTP'', \n''pattern'':''MVC'',\n''Langage'':''PHP''\n}\n', '{\n''A'':''promo'',\n''M'':''bi''\n}', 0),
-(2, 1, 'Programmation WEB côté Serveur - JAVA (M3104-2)', 'PWEB JAVA', '{\r\n''Systeme WEB'':''Client Serveur HTTP'', \r\n''Langage'':''JAVA''\r\n}\r\n', '{\n''A'':''promo'',\n''M'':''bi''\n}', 0),
-(9, 1, 'Algorithmique avancée', 'AAV', '{''proba'': [''espace''], ''stat'': ''régression''}', '{\r\n''A'':''promo'',\r\n''T'':''bi'',\r\n''M'':''mono''\r\n}', 0),
-(14, 1, 'Anglais', 'ANG', 'vocabulaire', '{M:mono}', 0),
-(15, 1, 'Expression Communication', 'EC', '{\r\n''expression'':''écriture de rapport de stage'',\r\n''communication:''soutenance orale''\r\n}', '{''T'':''bi''\r\n}', 0);
+INSERT INTO `matiere` (`id_mat`, `id_form`, `nom`, `label`, `themes`, `typeEns`) VALUES
+(1, 1, 'Programmation WEB côté Serveur (M3104)', 'PWEB', '{\n''web'':''Client Serveur HTTP'', \n''pattern'':''MVC'',\n''Langage'':''PHP''\n}\n', '{\r\n''A'':[''promo'', ''1.5''],\r\n''M'':[''bi'',''3'']\r\n}'),
+(2, 1, 'Programmation WEB côté Serveur - JAVA (M3104-2)', 'PWEB JAVA', '{\r\n''Systeme WEB'':''Client Serveur HTTP'', \r\n''Langage'':''JAVA''\r\n}\r\n', '{\r\n''A'':[''promo'',''1.5''],\r\n''M'':[''bi'',''3'']\r\n}'),
+(9, 1, 'Algorithmique avancée', 'AAV', '{''complexite'': ''tri''}', '{\r\n''A'':[''promo'',''1.5''],\r\n''T'':[''bi'',''1.5''],\r\n''M'':[''mono'',''1.5'']\r\n}'),
+(14, 1, 'Anglais', 'ANG', 'vocabulaire', '{''M'':[''mono'',''1.5'']}'),
+(15, 1, 'Expression Communication', 'EC', '{\r\n''expression'':''écriture de rapport de stage'',\r\n''communication:''soutenance orale''\r\n}', '{\n''T'':[''bi'',''1.5'']\n}'),
+(16, 1, 'Modélisation Objet', 'MO', '{''modele'' : ''UML''}', '{\n''A'':[''promo'',''1.5''],\n''M'':[''bi'',''3'']\n}'),
+(17, 1, 'PROBA STAT', 'PS', '{''proba'': [''espace''], \n''stat'': [''régression'']}', '{ ''A'':[''promo'',''1.5''], ''M'':[''bi'',''3''] }');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `period`
+--
+
+CREATE TABLE IF NOT EXISTS `period` (
+  `id_period` int(11) NOT NULL AUTO_INCREMENT,
+  `id_promo` int(11) NOT NULL,
+  `label` text NOT NULL,
+  `tDeb` int(11) NOT NULL,
+  `tFin` int(11) NOT NULL,
+  PRIMARY KEY (`id_period`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `period`
+--
+
+INSERT INTO `period` (`id_period`, `id_promo`, `label`, `tDeb`, `tFin`) VALUES
+(1, 1, 'C', 1513292400, 1540656000),
+(2, 1, 'D', 1540677600, 1541178000);
 
 -- --------------------------------------------------------
 
@@ -192,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `bConnect` tinyint(1) NOT NULL,
   `bEDT` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_prof`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `professeur`
@@ -206,39 +352,41 @@ INSERT INTO `professeur` (`id_prof`, `genre`, `nom`, `prenom`, `email`, `label`,
 (6, 'M', 'Ouziri', 'Mourad', 'mouziri@parisdescartes.fr', 'MO', 'mouziri', '*F07FBB4086D1DF19106B375B6E5D7A11BB485C2E', '2018-09-10', 0, 0),
 (7, 'Mme', 'Dirani', 'Hélène', 'hdirani@parisdescartes.fr', 'HD', 'hdirani', '*81DD599CAA08EA3C67AB17DD86AB3094216B1EC4', '2018-09-10', 0, 0),
 (8, 'M', 'Poitrenaud', 'Denis', 'dpoitrenaud', 'DP', 'dpoitrenaud', '*A6C32F3A9310014F2B06BDCCD1752D9C47A73A38', '2018-09-10', 0, 0),
-(9, 'Mme', 'MARECHAL', 'Laurence', 'lmarechal@parisdescartes.fr', 'LM', 'lmarechal', '*0DFC2E234404E6A97CC9456A8DD457521BF77C97', '2018-09-10', 0, 0),
-(10, 'M', 'Oliviero', 'Philippe', 'poliviero@parisdescartes.fr', 'PhO', 'poliviero', '*2CED6004642B247385E3DEEF9ECF1D4007AC2492', '2018-09-10', 0, 0),
-(11, 'M', 'Bienvenu', 'Julien', 'jbienvenu@parisdescartes.fr', 'JB', 'jbienvenu', '*7F304E7ED5F68993BC99529294E1A22E1DC251DB', '2019-10-09', 0, 0);
+(9, 'Mme', 'Marechal', 'Laurence', 'lmarechal@parisdescartes.fr', 'LM', 'lmarechal', '*0DFC2E234404E6A97CC9456A8DD457521BF77C97', '2018-09-10', 0, 0),
+(10, 'M', 'Oliviero', 'Philippe', 'poliviero@parisdescartes.fr', 'PhO', 'poliviero', '*2CED6004642B247385E3DEEF9ECF1D4007AC2492', '2018-09-10', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `resultat`
+-- Structure de la table `salle`
 --
 
-CREATE TABLE IF NOT EXISTS `resultat` (
-  `id_res` int(11) NOT NULL AUTO_INCREMENT,
-  `id_test` int(11) NOT NULL,
-  `id_etu` int(11) NOT NULL,
-  `id_quest` int(11) NOT NULL,
-  `id_rep` int(11) NOT NULL,
-  PRIMARY KEY (`id_res`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+CREATE TABLE IF NOT EXISTS `salle` (
+  `id_salle` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  `label` text NOT NULL,
+  `batiment` text NOT NULL,
+  `type_salle` text NOT NULL,
+  `nb_postes` int(11) NOT NULL,
+  PRIMARY KEY (`id_salle`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Contenu de la table `resultat`
+-- Contenu de la table `salle`
 --
 
-INSERT INTO `resultat` (`id_res`, `id_test`, `id_etu`, `id_quest`, `id_rep`) VALUES
-(1, 1, 1, 2, 4),
-(2, 1, 1, 2, 5),
-(3, 1, 1, 2, 6),
-(4, 1, 2, 2, 6),
-(5, 1, 2, 2, 7),
-(6, 1, 2, 2, 8),
-(7, 1, 5, 2, 4),
-(8, 1, 5, 2, 5),
-(9, 1, 5, 2, 6);
+INSERT INTO `salle` (`id_salle`, `nom`, `label`, `batiment`, `type_salle`, `nb_postes`) VALUES
+(1, 'B1-12', 'B1-12', 'Blériot\niut-Paris', 'M', 25),
+(2, 'IOT WIFI 1', 'B2-15', 'Blériot\nIUT-Paris', 'M', 25),
+(3, 'V1-11', 'V1-11', 'Versailles-\nIUT Paris', 'M', 30),
+(4, 'Daumart', 'A-1', 'iut-paris', 'A', 200),
+(5, 'IOT WIFI 2', 'V1-11', 'iut-Paris', 'M', 30),
+(6, 'Olympe de Gouge', 'A-2', 'iut-paris', 'A', 200),
+(7, 'B2-12', 'B2-12', 'Blériot\r\niut-Paris', 'T', 22),
+(8, 'B2-17', 'B2-17', 'Blériot\r\niut-Paris', 'T', 22),
+(9, 'B0-13', 'B0-13', 'Blériot\r\niut-Paris', 'M', 22),
+(10, 'B1-17', 'B1-17', 'Blériot\r\niut-Paris', 'M', 22),
+(11, 'B0-3', 'B0-3', 'Blériot\r\niut-Paris', 'M', 22);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
