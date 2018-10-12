@@ -1,9 +1,9 @@
 <?php
 	
 	$hostname = "localhost";	//ou localhost
-	$base= "pweb18";
-	$loginBD= "root";	//ou "root"
-	$passBD="";
+	$base= "pweb18_";
+	$loginBD= "pweb18_froment";	//ou "root"
+	$passBD="25051999";
 	$pdo = null;
 
 try {
