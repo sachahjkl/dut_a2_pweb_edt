@@ -38,7 +38,7 @@
 				<div class= "btn-group col-sm-6">
 					<button  type="submit" class="btn btn-primary col-sm" name="action" value= <?php $_GET['action'] = "connect_".$type ?> >Connexion</button>
 					<input type="hidden" name="controle" value=<?php $_GET['controle'] = "choix_type_util"?> > 
-					<a href="./index.php" type="submit" class="btn btn-secondary col-sm">Retour</a>
+					<button formaction="./index.php" type="submit" class="btn btn-secondary col-sm">Retour</button>
 				</div>
 			</div>
 		</form>

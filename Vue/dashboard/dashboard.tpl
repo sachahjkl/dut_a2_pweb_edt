@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang='fr'>
+<head>
+	<meta charset='utf-8'>
+	<title>Connexion d'un <?php echo $nom_type ?></title>
+	<link rel='stylesheet' href='./Bootstrap/css/bootstrap.css'>
+	<link rel='stylesheet' href='./Vue/style/all.css'>
+	<script src='./Bootstrap/js/bootstrap.min.js'></script>
+</head>
+<body class="calendar_back">
+		<div class="vertical-center cardbox card bg-light mb-3" style="margin: 20em 5em 0 5em ;"> 
+			<div class="card-header">
+				Informations concernant l'utilisateur
+			</div>
+			<div class="card-text table-responsive">
+				<?php
+					echo("<table class='table d-flex'><tr>");
+					foreach($_SESSION['profil'] as $key => $value){
+						echo ("<th>". utf8_encode($key) ."</th>");
+					}
+					echo"</tr><tr>";
+					foreach($_SESSION["profil"] as $key => $value){
+						echo ("<td>". utf8_encode($value) ."</td>");
+					}
+					echo("</tr></table>");
+				?>
+			</div>
+		</div>
+</body>
