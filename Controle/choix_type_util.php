@@ -19,8 +19,6 @@ if($type == "etu")
 	$nom_type = "étudiant";
 if($type == "prof")
 	$nom_type = "professeur";
-var_dump($_POST);
-var_dump($_GET);
 if  (!isset($_POST['login']) && !isset($_POST['pwd'])){
 	require('./Vue/choix_type_util/connect_usr.tpl');
 }else {

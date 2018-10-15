@@ -3,9 +3,9 @@ function check_profile($login,$pwd,&$profil,$type){
 	require('./Modele/connectBD.php'); //$pdo est défini dans ce fichier
 	$sql = "";
 	if($type == "etu"){
-		$sql="SELECT * FROM `etudiant`  where login_etu=:login and pass_etu=:pwd";
+		$sql="SELECT id_etu, id_promo, id_grpe, genre, nom, prenom, email, login_etu, MD5(pass_etu) as pass_etu, matricule, date_etu, urlPhoto FROM `etudiant`  where login_etu=:login and MD5(pass_etu)= MD5(:pwd)";
 	}elseif($type == "prof"){
-		$sql="SELECT id_prof, genre, nom, prenom, email, label, login_prof, date_prof, urlPhoto, couleur, bConnect FROM `prof`  where login_prof=:login and pass_prof=:pwd";
+		$sql="SELECT id_prof, genre, nom, prenom, email, label, login_prof, MD5(pass_prof) as pass_prof, date_prof, urlPhoto, couleur FROM `prof`  where login_prof=:login and MD5(pass_prof)=MD5(:pwd)";
 	}else{
 		return false;
 	}
