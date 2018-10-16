@@ -1,12 +1,10 @@
 <!doctype html>
 <html><head>
 	<meta charset="utf-8">
-	<title>TP1 contacts - mvc - erreur </title>
+	<title>erreur </title>
 </head>
-
 <body>
 	<h2>
-		erreur 404 : paramètres incorrects
+	erreur 404 : paramètres incorrects
 	</h2>
 </body></html>
-	

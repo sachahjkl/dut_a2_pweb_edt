@@ -15,6 +15,7 @@ else {
 			$action = 	 $_GET['action'];	//avec les 2 paramètres controle et action
 		}
 	}
+	
 //echo ('controle : ' . $controle . ' et <br/> action : ' . $action);	
 require ('./Controle/' . $controle . '.php');
 $action ();
