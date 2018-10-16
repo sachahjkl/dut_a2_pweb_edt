@@ -10,6 +10,7 @@
 <body class="calendar_back">
 
 		<a class="btn btn-primary" href="./index.php?controle=info_usr&action=load">Information Utilisateur</a>
+		<a class="btn btn-danger" href="./index.php?controle=choix_type_util&action=disconnect"  >Déconnexion</a>
 		<!-- <?php require("./Vue/dashboard/edth.tpl")?> -->
 
 		<!-- <?php require("./Vue/dashboard/menu.tpl")?> -->

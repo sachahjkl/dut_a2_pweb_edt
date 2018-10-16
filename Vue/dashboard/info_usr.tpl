@@ -15,11 +15,10 @@
 			<div class="card-header">
 				Image de l'utilisateur
 			</div>
-			<div class="card-text table-responsive">
-				sfsdf
+			<div class="card-text">
 				<?php
 					if($_SESSION['profil']['urlPhoto'] == ''){
-					echo utf8_encode();
+					echo utf8_encode("Nom : ".$_SESSION['profil']['nom']);
 				}
 				?>
 			</div>

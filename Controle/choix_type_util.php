@@ -38,3 +38,8 @@ if  (!isset($_POST['login']) && !isset($_POST['pwd'])){
 	}
 
 }
+
+function disconnect(){
+	session_destroy();
+	header("Location:./index.php");
+}
