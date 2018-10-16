@@ -8,7 +8,13 @@
 	<script src='./Bootstrap/js/bootstrap.min.js'></script>
 </head>
 <body class="calendar_back">
-		<div class="vertical-center cardbox card bg-light mb-3" style="margin: 20em 5em 0 5em ;"> 
+
+		<a class="btn btn-primary" href="./index.php?controle=info_usr&action=load">Information Utilisateur</a>
+		<!-- <?php require("./Vue/dashboard/edth.tpl")?> -->
+
+		<!-- <?php require("./Vue/dashboard/menu.tpl")?> -->
+
+		<!-- <div class="vertical-center cardbox card bg-light mb-3" style="margin: 20em 5em 0 5em ;"> 
 			<div class="card-header">
 				Informations concernant l'utilisateur
 			</div>
@@ -25,5 +31,5 @@
 					echo("</tr></table>");
 				?>
 			</div>
-		</div>
+		</div> -->
 </body>
