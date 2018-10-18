@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Connexion d'un <?php echo $nom_type ?></title>
 		<link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./Vue/style/all.css">
+		<link rel="stylesheet" href="./view/style/all.css">
 		<script src="./Bootstrap/js/bootstrap.min.js"></script>
 	</head>
 	<body class="calendar_back">
@@ -37,7 +37,7 @@
 					<div class="col-sm-3"></div>
 					<div class= "btn-group col-sm-6">
 						<button  type="submit" class="btn btn-primary col-sm" name="action" value= <?php $_GET['action'] = "connect_".$type ?> >Connexion</button>
-						<input type="hidden" name="controle" value=<?php $_GET['controle'] = "choix_type_util"?> >
+						<input type="hidden" name="controle" value=<?php $_GET['controle'] = "usr"?> >
 						<button formaction="./index.php" type="submit" class="btn btn-secondary col-sm">Retour</button>
 					</div>
 				</div>

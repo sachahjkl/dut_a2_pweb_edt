@@ -2,11 +2,11 @@
 session_start ();
 
 if ((count($_GET)!=0) && !(isset($_GET['controle']) && isset ($_GET['action'])))
-			require ('./Vue/erreur404.tpl'); //cas d'un appel à index.php avec des paramètres incorrects	
+			require ('./view/erreur404.tpl'); //cas d'un appel à index.php avec des paramètres incorrects	
 else {
 
 	if (count($_GET)==0){
-		$controle = "choix_type_util";   //cas d'une personne non authentifiée
+		$controle = "usr";   //cas d'une personne non authentifiée
 		$action=	"choix";		//ou d'un appel à index.php sans paramètre
 	}
 	else {
@@ -17,7 +17,7 @@ else {
 	}
 	
 //echo ('controle : ' . $controle . ' et <br/> action : ' . $action);	
-require ('./Controle/' . $controle . '.php');
+require ('./controller/' . $controle . '.php');
 $action ();
 } 
 

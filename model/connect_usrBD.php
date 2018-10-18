@@ -1,6 +1,6 @@
 <?php
 function check_profile($login,$pwd,&$profil,$type){
-	require('./Modele/connectBD.php'); //$pdo est défini dans ce fichier
+	require('./model/connectBD.php'); //$pdo est défini dans ce fichier
 	$sql = "";
 	if($type == "etu"){
 		$sql="SELECT id_etu, id_promo, id_grpe, genre, nom, prenom, email, login_etu, MD5(pass_etu) as pass_etu, matricule, date_etu, urlPhoto FROM `etudiant`  where login_etu=:login and MD5(pass_etu)= MD5(:pwd)";
@@ -34,7 +34,7 @@ function check_profile($login,$pwd,&$profil,$type){
 		}
 	}
 function connectBD($profil){
-	require('./Modele/connectBD.php');
+	require('./model/connectBD.php');
 	$sql = "";
 	$type = $_SESSION['type'];
 	if($type == "etu"){
@@ -52,7 +52,7 @@ function connectBD($profil){
 	}
 }
 function disconnectBD($profil){
-	require('./Modele/connectBD.php');
+	require('./model/connectBD.php');
 	$sql = "";
 	$type = $_SESSION['type'];
 	if($type == "etu"){
@@ -63,6 +63,26 @@ function disconnectBD($profil){
 	try {
 		$commande = $pdo->prepare($sql);
 		$commande->bindParam(':id', $_SESSION['profil']['id_'.$type]);
+		$bool = $commande->execute();
+	} catch (PDOException $e) {
+		echo utf8_encode("Echec de update : " . $e->getMessage() . "\n");
+			die(); // On arrête tout.
+	}
+}
+
+function changeImage($url){
+	require('./model/connectBD.php');
+	$sql = "";
+	$type = $_SESSION['type'];
+	if($type == "etu"){
+		$sql="UPDATE etudiant SET urlPhoto=:url WHERE id_etu =:id";
+	}elseif($type == "prof"){
+		$sql="UPDATE prof SET urlPhoto=:url WHERE id_prof =:id";
+	}
+	try {
+		$commande = $pdo->prepare($sql);
+		$commande->bindParam(':id', $_SESSION['profil']['id_'.$type]);
+		$commande->bindParam(':url', $url);
 		$bool = $commande->execute();
 	} catch (PDOException $e) {
 		echo utf8_encode("Echec de update : " . $e->getMessage() . "\n");
