@@ -50,6 +50,9 @@ function disconnect(){
 }
 
 function uploadFile(){
+	if($_FILES["fileToUpload"]['tmp_name'] == ""){
+		header("Location:./index.php?controle=info_usr&action=load");
+	}
 	$temp = explode(".", $_FILES["fileToUpload"]["name"]);
 	$target_dir = "./userdata/images/";
 	$target_file = $target_dir . $_SESSION['profil']['nom']. $_SESSION['profil']['prenom'].'.' . end($temp);
@@ -69,6 +72,7 @@ function uploadFile(){
     $m = utf8_encode("Votre image est trop large.");
     $uploadOk = 0;
 	}
+
 
 	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
     $m = utf8_encode("Seulement les jpg, png ou jpeg sont autorises.");
