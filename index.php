@@ -6,8 +6,8 @@ if ((count($_GET)!=0) && !(isset($_GET['controle']) && isset ($_GET['action'])))
 else {
 
 	if (count($_GET)==0){
-		$controle = "usr";   //cas d'une personne non authentifiée
-		$action=	"choix";		//ou d'un appel à index.php sans paramètre
+		$controle = "connection";   //cas d'une personne non authentifiée
+		$action=	"user_select";		//ou d'un appel à index.php sans paramètre
 	}
 	else {
 		if (isset($_GET['controle']) && isset ($_GET['action'])) {
