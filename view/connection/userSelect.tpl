@@ -8,7 +8,7 @@
 		<script src='./Bootstrap/js/bootstrap.min.js'></script>
 	</head>
 	<body class="calendar_back">
-		<div class="container">
+		<div class="container page-wrap">
 			<div class="row">
 				<div class="col-2"></div>
 				<div class="card shadow-dark mt-5 mb-3 col-8">
@@ -27,16 +27,12 @@
 						<div class="btn-group col-8 " role="group" aria-label="user_select">
 							<button type="submit" name="controle" value="etudiant" class="btn btn-primary btn-lg col">Etudiant</button>
 							<input type="hidden" name="action" value="login">
-							<button type="submit" name="controle" value="professeur" class="btn btn-lg btn-success col">Professeur</button>	
+							<button type="submit" name="controle" value="professeur" class="btn btn-lg btn-success col">Professeur</button>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<footer class="footer card bg-dark fixed-bottom">
-			<div class="container">
-				<span class="text-primary text-light">@Projet-Pweb-2018 - Bootstrap 4.</span>
-			</div>
-		</footer>
+		
 	</body>
 </html>

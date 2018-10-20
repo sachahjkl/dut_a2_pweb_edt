@@ -1,34 +1,18 @@
-.shadow-dark{
-	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-.calendar_back{
-	background-image: url("../images/back_choix.jpg");
-}
-
-@media screen and (max-width: 767px) {
-    body {
-        font-size: 0.9em;
-    }
-}
+.shadow-dark { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+.calendar_back { background-image: url("../images/back_choix.jpg"); }
+.page-wrap { min-height: 100vh; }
 
 /* sm */
-@media screen and (min-width: 768px) {
-    body {
-        font-size: 1em;
-    }
+@media screen and (min-width:768px) {
+	body { font-size: 1em; }
 }
 
 /* md */
-@media screen and (min-width: 992px) {
-    body {
-        font-size: 1.2em;
-    }
+@media screen and (min-width:992px) {
+	body { font-size: 1.2em; }
 }
 
 /* lg */
-@media screen and (min-width: 1200px) {
-    body {
-        font-size: 1.3em;
-    }
+@media screen and (min-width:1200px) {
+	body { font-size: 1.3em; }
 }

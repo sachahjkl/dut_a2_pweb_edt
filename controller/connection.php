@@ -1,8 +1,10 @@
 <?php
 
-function user_select()
+function userSelect()
 {
-	if(isset($SESSION['profile']))
-		header("Location=./index?controle=".$SESSION['type']."&action=connect");
-	require('./view/connection/user_select.tpl');
+    if (isset($_SESSION['profile'])) {
+        header("Location=./index?controle=" . $_SESSION['userType'] . "&action=connect");
+    }
+
+    require './view/connection/userSelect.tpl';
 }
