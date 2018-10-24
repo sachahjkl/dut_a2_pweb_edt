@@ -131,7 +131,7 @@ function getProfs(&$p) {
 
 function getGroupes(&$g) {
     global $pdo;
-    $sql = "SELECT DISTINCT id_grpe, num_grpe FROM groupe WHERE type_grpe ='mono' OR type_grpe ='bi' ORDER BY id_grpe ASC;";
+    $sql = "SELECT DISTINCT id_grpe, num_grpe FROM groupe WHERE type_grpe ='mono' ORDER BY id_grpe ASC;";
     try {
         $commande = $pdo->prepare($sql);
         $bool     = $commande->execute();

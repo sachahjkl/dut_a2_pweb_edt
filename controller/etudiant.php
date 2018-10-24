@@ -28,12 +28,13 @@ function connect() {
         } else {
             $_SESSION["profile"]  = $profile;
             $_SESSION["userType"] = $type;
-            header("Location:./index.php?controle=etudiant&action=loadDashboard");
+            header("Location:./index.php?controle=etudiant&action=loadDashboard&idEDTH=6&matiere=all&prof=all&grpe=201");
         }
     }
 }
 
 function loadDashboard() {
+
     //if(!isset)
     require "./model/connectUsrBD.php";
     $menuFile = "menuEtu.tpl";
