@@ -90,9 +90,9 @@ function getEDTH(&$edth) {
         echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
         die(); // On arrête tout.
     }
-    /*for ($i = 0; $i < count($resultat); $i++) {
-    $resultat[$i]["tDeb"] = date("D j-n-Y", $resultat[$i]["tDeb"] + 7200);
-    }*/
+    for ($i = 0; $i < count($resultat); $i++) {
+        $resultat[$i]["tDeb"] = date("D j-n-Y", $resultat[$i]["tDeb"] + 7200);
+    }
     $edth = $resultat;
 }
 

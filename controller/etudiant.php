@@ -36,10 +36,9 @@ function connect() {
 function loadDashboard() {
     //if(!isset)
     require "./model/connectUsrBD.php";
-    $Default_Week = "6";
     $Default_EDTH = "6";
+    $Default_GRP  = $_SESSION["profil"]["id_grp"];
     getEDTH($edth);
-    //getCreneaux();
     var_dump($edth);
     var_dump($_SESSION["profile"]);
     session_destroy();die();
