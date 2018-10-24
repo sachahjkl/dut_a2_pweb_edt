@@ -36,10 +36,16 @@ function connect() {
 function loadDashboard() {
     //if(!isset)
     require "./model/connectUsrBD.php";
-    $Default_EDTH = "6";
-    $Default_GRP  = $_SESSION["profil"]["id_grp"];
-    getEDTH($edth);
-    var_dump($edth);
-    var_dump($_SESSION["profile"]);
-    session_destroy();die();
+    $menuFile = "menuEtu.tpl";
+    getIdEDTH($EDTH);
+    getMatieres($matieres);
+    getProfs($profs);
+    getGroupes($grps);
+    require "./view/dashboard/dashboard.tpl";
+    /*$Default_EDTH = "6";
+$Default_GRP  = $_SESSION["profil"]["id_grp"];
+getEDTH($edth);
+var_dump($edth);
+var_dump($_SESSION["profile"]);
+session_destroy();die();*/
 }
