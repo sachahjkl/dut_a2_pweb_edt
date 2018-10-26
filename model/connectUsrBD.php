@@ -23,6 +23,7 @@ function connectEtu($login, $pwd, &$profile) {
         return false;
     } else {
         $profile = $resultat[0];
+        Connecter($profile['id_etu']);
         return true;
     }
 }
@@ -75,9 +76,9 @@ function estResponsable($idProf) {
     }
 }
 
-function getIdEDTH(&$edth) {
+function getEDTH(&$edth) {
     global $pdo;
-    $sql = "SELECT DISTINCT id_edth, label FROM edth ORDER BY tdeb ASC;";
+    $sql = "SELECT DISTINCT * FROM edth ORDER BY tdeb ASC;";
     try {
         $commande = $pdo->prepare($sql);
         $bool     = $commande->execute();
@@ -90,63 +91,26 @@ function getIdEDTH(&$edth) {
         echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
         die(); // On arrête tout.
     }
+    /*for ($i = 0; $i < count($resultat); $i++) {
+    $resultat[$i]["tDeb"] = date("D j-n-Y", $resultat[$i]["tDeb"] + 7200);
+    }*/
     $edth = $resultat;
-}
-
-function getMatieres(&$m) {
-    global $pdo;
-    $sql = "SELECT DISTINCT id_mat, label FROM matiere ORDER BY id_mat ASC;";
-    try {
-        $commande = $pdo->prepare($sql);
-        $bool     = $commande->execute();
-        $resultat = array();
-        if ($bool) {
-            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-    } catch (PDOException $e) {
-        echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
-        die(); // On arrête tout.
-    }
-    $m = $resultat;
-}
-
-function getProfs(&$p) {
-    global $pdo;
-    $sql = "SELECT DISTINCT id_prof, label FROM prof ORDER BY id_prof ASC;";
-    try {
-        $commande = $pdo->prepare($sql);
-        $bool     = $commande->execute();
-        $resultat = array();
-        if ($bool) {
-            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-    } catch (PDOException $e) {
-        echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
-        die(); // On arrête tout.
-    }
-    $p = $resultat;
-}
-
-function getGroupes(&$g) {
-    global $pdo;
-    $sql = "SELECT DISTINCT id_grpe, num_grpe FROM groupe WHERE type_grpe ='mono' ORDER BY id_grpe ASC;";
-    try {
-        $commande = $pdo->prepare($sql);
-        $bool     = $commande->execute();
-        $resultat = array();
-        if ($bool) {
-            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-    } catch (PDOException $e) {
-        echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
-        die(); // On arrête tout.
-    }
-    $g = $resultat;
 }
 
 function getCreneaux($id_Edth, $a) {
 
+}
+
+function Connecter($id_etu) {
+    global $pdo;
+    $sql = "UPDATE `etudiant` SET `bConnect`=1 WHERE id_etu=:id";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':id', $id_etu);
+        $commande->execute();
+
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
+        die(); // On arrête tout.
+    }
 }

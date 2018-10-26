@@ -28,25 +28,28 @@ function connect() {
         } else {
             $_SESSION["profile"]  = $profile;
             $_SESSION["userType"] = $type;
-            header("Location:./index.php?controle=etudiant&action=loadDashboard&idEDTH=6&matiere=all&prof=all&grpe=201");
+            header("Location:./index.php?controle=etudiant&action=loadDashboard");
         }
     }
 }
 
 function loadDashboard() {
-
     //if(!isset)
-    require "./model/connectUsrBD.php";
-    $menuFile = "menuEtu.tpl";
-    getIdEDTH($EDTH);
-    getMatieres($matieres);
-    getProfs($profs);
-    getGroupes($grps);
-    require "./view/dashboard/dashboard.tpl";
-    /*$Default_EDTH = "6";
-$Default_GRP  = $_SESSION["profil"]["id_grp"];
-getEDTH($edth);
-var_dump($edth);
-var_dump($_SESSION["profile"]);
-session_destroy();die();*/
+    require "./model/Chat_etu.php";
+    $Default_Week = "6";
+    $Default_EDTH = "6";
+    //getEDTH($edth);
+    //getCreneaux();
+    //var_dump($edth);
+   // var_dump($_SESSION["profile"]);
+    $etu_connected=EtuConnected($_SESSION["profile"]["id_etu"]);
+    //var_dump($etu_connected);
+    require("./view/chat/accueilChat.tpl");
+}
+
+function chargerChat(){
+    
+
+
+    require("./view/chat/accueilChat.tpl");
 }

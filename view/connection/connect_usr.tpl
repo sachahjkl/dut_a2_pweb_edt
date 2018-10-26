@@ -36,7 +36,9 @@
 				<div class="row">
 					<?=$msg?>
 				</div>
+				
 			</div>
+			
 		</div>
 	</body>
 </html>
