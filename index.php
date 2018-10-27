@@ -1,23 +1,23 @@
-<?php 
-session_start ();
-
-if ((count($_GET)!=0) && !(isset($_GET['controle']) && isset ($_GET['action'])))
-			require ('./view/erreur404.tpl'); //cas d'un appel à index.php avec des paramètres incorrects	
+<?php
+setlocale(LC_ALL, 'fr_FR');
+header('content-type: text/html; charset=utf-8');
+session_start();
+if ((count($_GET) != 0) && (!isset($_GET['controle']) || !isset($_GET['action']))) {
+    $errorMessage = 'Parametres incorrects.';
+    require './view/other/404error.tpl';
+}
+//cas d'un appel à index.php avec des paramètres incorrects
 else {
 
-	if (count($_GET)==0){
-		$controle = "usr";   //cas d'une personne non authentifiée
-		$action=	"choix";		//ou d'un appel à index.php sans paramètre
-	}
-	else {
-		if (isset($_GET['controle']) && isset ($_GET['action'])) {
-			$controle = $_GET['controle'];   //cas d'un appel à index.php 
-			$action = 	 $_GET['action'];	//avec les 2 paramètres controle et action
-		}
-	}
-	
-//echo ('controle : ' . $controle . ' et <br/> action : ' . $action);	
-require ('./controller/' . $controle . '.php');
-$action ();
-} 
+    if (count($_GET) == 0) {
+        $controle = "connection"; //cas d'une personne non authentifiée
+        $action   = "login"; //ou d'un appel à index.php sans paramètre
+    } else {
+        $controle = isset($_GET['controle']) ? $_GET['controle'] : ''; //cas d'un appel à index.php
+        $action   = isset($_GET['action']) ? $_GET['action'] : ''; //avec les 2 paramètres controle et action
 
+    }
+    require './controller/' . $controle . '.php';
+    $action();
+
+}
