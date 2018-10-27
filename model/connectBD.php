@@ -1,6 +1,5 @@
 <?php
 
-global $pdo;
 $hostname = "localhost"; //ou localhost
 $base     = "pweb18_";
 $loginBD  = "pweb18_froment"; //ou "root"

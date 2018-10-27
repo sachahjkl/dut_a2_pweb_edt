@@ -1,52 +1,61 @@
 <?php
-header('content-type: text/html; charset=utf-8');
-function login() {
-    $type  = "etudiant";
-    $util  = "étudiant";
-    $login = "";
-    $msg   = "";
-    require "./view/connection/connect_usr.tpl";
-}
 
-function connect() {
-    if (isset($_SESSION["profile"])) {
-        header("Location=./index?controle=" . $_SESSION['userType'] . "&action=loadDashboard");
+function load()
+{
+    $subaction = isset($_GET['subaction']) ? $_GET['subaction'] : 'EDTH';
+    if (!isset($_SESSION["profile"])) {
+        header('Location:./index.php');
+    } else {
+        ("load" . $subaction)();
     }
 
-    $login = isset($_POST["login"]) ? ($_POST["login"]) : "";
-    $pwd   = isset($_POST["pwd"]) ? ($_POST["pwd"]) : "";
-    $type  = "etudiant";
-    $util  = "étudiant";
-    if ($login == "" && $pwd == "") {
-        header("Location:./index.php?controle=etudiant&action=login");
-    } else {
-        $profile = array();
-        require "./model/connectUsrBD.php";
-        if (!connectEtu($login, $pwd, $profile)) {
-            $msg = "<div class='alert alert-danger mt-3' role='alert'>Identifiants incorrects. Veuillez reéssayer.</div>";
-            require "./view/connection/connect_usr.tpl";
-        } else {
-            $_SESSION["profile"]  = $profile;
-            $_SESSION["userType"] = $type;
-            header("Location:./index.php?controle=etudiant&action=loadDashboard&idEDTH=6&matiere=all&prof=all&grpe=201");
+}
+
+function loadEDTH()
+{
+    $selectedEDTH = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : 6;
+    require './model/etudiant.php';
+    getEDTHS($edth);
+    $edthN    = $edth[$selectedEDTH - 1];
+    $crenaux  = getCreneaux($selectedEDTH, $_SESSION['profile']['id_etu']);
+    $lundi    = array();
+    $mardi    = array();
+    $mercredi = array();
+    $jeudi    = array();
+    $vendredi = array();
+    foreach ($crenaux as $v) {
+        switch (date("N", $v["tDeb"])) {
+            case 1:
+                $lundi[] = $v;
+                break;
+            case 2:
+                $mardi[] = $v;
+                break;
+            case 3:
+                $mercredi[] = $v;
+                break;
+            case 4:
+                $jeudi[] = $v;
+                break;
+            case 5:
+                $vendredi[] = $v;
+                break;
+            default:
+                break;
         }
     }
+    $chemin = './view/etudiant/edth.tpl';
+    require './view/layout.tpl';
 }
 
-function loadDashboard() {
+function loadListProf()
+{
+    $chemin = './view/etudiant/listProf.tpl';
+    require './view/layout.tpl';
+}
 
-    //if(!isset)
-    require "./model/connectUsrBD.php";
-    $menuFile = "menuEtu.tpl";
-    getIdEDTH($EDTH);
-    getMatieres($matieres);
-    getProfs($profs);
-    getGroupes($grps);
-    require "./view/dashboard/dashboard.tpl";
-    /*$Default_EDTH = "6";
-$Default_GRP  = $_SESSION["profil"]["id_grp"];
-getEDTH($edth);
-var_dump($edth);
-var_dump($_SESSION["profile"]);
-session_destroy();die();*/
+function loadParamUtil()
+{
+    $chemin = './view/etudiant/paramUtil.tpl';
+    require './view/layout.tpl';
 }
