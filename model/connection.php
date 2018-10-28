@@ -28,7 +28,7 @@ function connectEtu($login, $pwdMD5, &$profile)
 function connectProf($login, $pwdMD5, &$profile)
 {
     require './model/connectBD.php';
-    $sql = 'SELECT id_prof, genre, nom, prenom, email, label, login_prof, pass_prof, date_prof, urlPhoto, couleur FROM prof where login_prof=:login and pass_prof=:pwd';
+    $sql = 'SELECT * FROM prof P INNER JOIN prof_roles PR ON PR.id_prof = P.id_prof where login_prof=:login and pass_prof=:pwd';
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':login', $login);
