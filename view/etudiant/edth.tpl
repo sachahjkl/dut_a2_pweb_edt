@@ -17,7 +17,7 @@
 					<div class="row">
 						<?php
 						for ($i = 0; $i < 5 ; $i++) {
-						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".date('l d/m',(int)($edthN["tDeb"]+(86400*$i)))."</span></div>";
+						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".strftime('%A %d/%m',(int)($edthN["tDeb"]+(86400*$i)))."</span></div>";
 						}
 						?>
 					</div>
