@@ -16,6 +16,7 @@
       </li>
     </ul>
     <form class="form-inline">
+      <label class="h5 mr-3"> <?= $_SESSION['type'].": ".$_SESSION['profile']['genre'].". ".$_SESSION['profile']['prenom']." ".$_SESSION['profile']['nom']?></label>
       <input type="hidden" class="form-control" name="controle" value="connection">
       <button type="submit" class="btn btn-danger shadow-sm my-2 my-sm-0" name="action" value="disconnect">Déconnexion</button>
     </form>

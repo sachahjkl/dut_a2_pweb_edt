@@ -17,25 +17,66 @@
 					<div class="row">
 						<?php
 						for ($i = 0; $i < 5 ; $i++) {
-						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".date('l d/m',(intval($edthN["tDeb"])+(86400*$i)))."</span></div>";
+						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".date('l d/m',(int)($edthN["tDeb"]+(86400*$i)))."</span></div>";
 						}
 						?>
 					</div>
-					<div class="row">
+					<div class="row" style="position: relative;">
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
-							<div style="height: 16px"></div>
 							<?php foreach ($lundi as $v):
+								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
+								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
-								<div class="card d-flex shadow text-center" style="background-color: <?= $v['couleur']?>;height: <?=$h?>px; margin-bottom: 3px;">
+								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
-						<div class="card col bg-light mx-1 shadow"></div>
-						<div class="card col bg-light mx-1 shadow"></div>
-						<div class="card col bg-light mx-1 shadow"></div>
-						<div class="card col bg-light mx-1 shadow"></div>
+						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php foreach ($mardi as $v):
+								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
+								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
+								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+							?>
+								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php foreach ($mercredi as $v):
+								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
+								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
+								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+							?>
+								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php foreach ($jeudi as $v):
+								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
+								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
+								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+							?>
+								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+								</div>
+							<?php endforeach ?>
+						</div>
+						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php foreach ($vendredi as $v):
+								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
+								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
+								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+							?>
+								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+								</div>
+							<?php endforeach ?>
+						</div>
 					</div>
 				</div>
 			</div>
