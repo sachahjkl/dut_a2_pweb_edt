@@ -3,7 +3,8 @@
 function connectEtu($login, $pwd, &$profile)
 {
     require './model/connectBD.php';
-    $sql = 'SELECT id_etu, id_promo, id_grpe, genre, nom, prenom, email, login_etu, MD5(pass_etu) as pass_etu, matricule, date_etu, urlPhoto FROM etudiant  where login_etu=:login and MD5(pass_etu)= MD5(:pwd)';
+    $sql = 'SELECT E.id_etu, P.label as pLabel, F.nom as fNom, E.id_grpe, E.genre, E.nom, E.prenom, E.email, E.login_etu, MD5(E.pass_etu) as pass_etu, E.matricule, E.date_etu, E.urlPhoto FROM (etudiant E INNER JOIN promotion P ON E.id_promo = P.id_promo) INNER JOIN formation F ON F.id_form = P.id_form where login_etu=:login and MD5(pass_etu)= MD5(:pwd)';
+    /*$sql = 'SELECT id_etu, id_promo, id_grpe, genre, nom, prenom, email, login_etu, MD5(pass_etu) as pass_etu, matricule, date_etu, urlPhoto FROM etudiant where login_etu=:login and MD5(pass_etu)= MD5(:pwd)';*/
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':login', $login);

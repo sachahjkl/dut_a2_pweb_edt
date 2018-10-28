@@ -40,3 +40,35 @@ function getCreneaux($idEDTH, $idEtu)
     }
     return $resultat;
 }
+
+function updatePicture($filePath, $idEtu)
+{
+    require './model/connectBD.php';
+    $sql = "UPDATE etudiant SET urlPhoto=:filePath WHERE id_etu=:idEtu";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':idEtu', $idEtu);
+        $commande->bindParam(':filePath', $filePath);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    return $bool;
+}
+
+function updatePwd($pwd, $idEtu)
+{
+    require './model/connectBD.php';
+    $sql = "UPDATE etudiant SET pass_etu=:pwd WHERE id_etu=:idEtu";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':idEtu', $idEtu);
+        $commande->bindParam(':pwd', $pwd);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    return $bool;
+}
