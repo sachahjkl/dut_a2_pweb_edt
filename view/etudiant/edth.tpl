@@ -1,6 +1,6 @@
 <body class='calendar_back'>
 	<?php require './view/etudiant/navbar.tpl' ?>
-	<div class="container-fluid mt-0">
+	<div class="container-fluid mt-6">
 		<div class="mx-3">
 			<div class="row" >
 				<div>

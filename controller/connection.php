@@ -6,8 +6,8 @@ function login()
         header('Location:./index.php?controle=' . $_SESSION['type'] . '&action=load');
     }
 
-    $login   = isset($_POST['login']) ? ($_POST['login']) : '';
-    $pwd     = isset($_POST['pwd']) ? ($_POST['pwd']) : '';
+    $login   = isset($_POST['login']) ? $_POST['login'] : '';
+    $pwd     = isset($_POST['pwd']) ? md5($_POST['pwd']) : '';
     $profile = array();
     $msg     = "";
 

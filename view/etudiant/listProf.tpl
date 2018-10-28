@@ -1,10 +1,28 @@
 <body class='calendar_back'>
 	<?php require './view/etudiant/navbar.tpl' ?>
-	<div class="container-fluid mt-3">
-		<div class="card shadow-sm">
-			<div class="card-body">
-				ListProf
+	<div class="container-fluid mt-6">
+		<div class="container">
+			<div class="card shadow">
+				<h5 class="card-header ">Professeurs intervenants et responsables par matière :</h5>
+				<div class="card-body">
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col" class="text-capitalize">Professeur :</th>
+								<th scope="col" class="text-capitalize">Rôle :</th>
+								<th scope="col" class="text-capitalize">Mail :</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php foreach ($profRoles as $pr): ?>
+							<tr>
+								<th scope="row" class="text-capitalize"><?=$pr['genre'].". ".$pr['prenom']." ".$pr['nom'] ?></th>
+								<td class="text-capitalize"><?= $pr['label']?></td>
+								<td class="text-capitalize"><?= $pr['email']?></td>
+							</tr>
+							<?php endforeach ?>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
-	</div>
-</body>
+		</body>

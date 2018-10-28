@@ -8,7 +8,6 @@ function load()
     } else {
         ("load" . $subaction)();
     }
-
 }
 
 function loadEDTH()
@@ -50,6 +49,9 @@ function loadEDTH()
 
 function loadListProf()
 {
+    $listProf = array();
+    require './model/etudiant.php';
+    getProfsRoles($profRoles);
     $chemin = './view/etudiant/listProf.tpl';
     require './view/layout.tpl';
 }
@@ -110,28 +112,28 @@ function loadNewPicture()
 
 function loadNewPassword()
 {
-    $pwdNow   = $_POST["pwdNow"];
-    $pwdNew1  = $_POST["pwdNew1"];
-    $pwdNew2  = $_POST["pwdNew2"];
+    $pwdNow   = md5($_POST["pwdNow"]);
+    $pwdNew1  = md5($_POST["pwdNew1"]);
+    $pwdNew2  = md5($_POST["pwdNew2"]);
     $msg      = "";
     $changeOK = 1;
     if ($pwdNow == "" || $pwdNew2 == "" || $pwdNew1 == "") {
         $msg      = "Veuillez remplir tous les champs.";
         $changeOK = 0;
-    } else if (md5($pwdNow) != $_SESSION['profile']['pass_etu']) {
+    } else if ($pwdNow != $_SESSION['profile']['pass_etu']) {
         $msg      = "Vous n'avez pas saisi le bon mot de passe actuel";
         $changeOK = 0;
     } else if ($pwdNew1 != $pwdNew2) {
         $msg      = "Vos nouveaux mot de passe ne sont pas identiques.";
         $changeOK = 0;
-    } else if (strlen($pwdNew1) < 8) {
-        $msg = "Votre nouveau mot de passe est trop court (8 caractères minimum)";
-    }
-    if ($changeOK) {
+    } else if (strlen($pwdNew1) < 4) {
+        $msg      = "Votre nouveau mot de passe est trop court (4 caractères minimum)";
+        $changeOK = 0;
+    } else if ($changeOK) {
         $msg = "Votre mot de passe a bien été mis à jour.";
         require './model/etudiant.php';
         if (updatePwd($pwdNew1, $_SESSION['profile']['id_etu'])) {
-            $_SESSION['profile']['pass_etu'] = md5($pwdNew1);
+            $_SESSION['profile']['pass_etu'] = $pwdNew1;
         } else {
             $changeOK = 0;
             $msg      = "Désolé, une erreur inconnue est survenue du changement de votre mot de passe.";

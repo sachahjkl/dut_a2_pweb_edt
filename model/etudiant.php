@@ -72,3 +72,21 @@ function updatePwd($pwd, $idEtu)
     }
     return $bool;
 }
+
+function getProfsRoles(&$profRoles)
+{
+    require './model/connectBD.php';
+    $sql = "SELECT PR.id_objet, PR.label, P.genre, P.nom, P.prenom, P.email FROM prof P INNER JOIN prof_roles PR ON P.id_prof = PR.id_prof ORDER BY PR.id_objet";
+    try {
+        $commande = $pdo->prepare($sql);
+        $bool     = $commande->execute();
+        $resultat = array();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    $profRoles = $resultat;
+}
