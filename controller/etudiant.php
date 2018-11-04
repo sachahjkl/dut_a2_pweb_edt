@@ -86,7 +86,7 @@ function loadNewPicture()
         $msg      = "Veuillez choisir un fichier avant d'envoyer.";
         $uploadOk = 0;
     } else if ($_FILES["newPP"]["size"] > ((int) (ini_get('upload_max_filesize')) * 1000000)) {
-        $msg      = "Désolé, le volume est trop volumineux.";
+        $msg      = "Désolé, le fichier est trop volumineux.";
         $uploadOk = 0;
     } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif") {
