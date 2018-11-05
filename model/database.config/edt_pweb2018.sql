@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 04 nov. 2018 à 20:51
+-- Généré le :  lun. 05 nov. 2018 à 16:44
 -- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Version de PHP :  5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `creneau` (
 
 INSERT INTO `creneau` (`id_creneau`, `tDeb`, `tFin`, `id_edth`, `id_mat`, `id_prof`, `id_grpe`, `id_salle`) VALUES
 (1, 1539604800, 1539615600, 6, 17, 5, 11, 7),
-(3, 1539687620, 1539765000, 6, 16, 6, 11, 9),
+(3, 1539678600, 1539685800, 6, 16, 6, 11, 9),
 (4, 1539777600, 1539788400, 6, 9, 4, 11, 10),
 (5, 1539604800, 1539615600, 6, 1, 2, 10, 11),
 (6, 1539676800, 1539680400, 6, 1, 2, 9, 11),
@@ -198,7 +198,7 @@ INSERT INTO `etudiant` (`id_etu`, `id_promo`, `id_grpe`, `genre`, `nom`, `prenom
 (2, 1, 1, 'M', 'Karl', 'Bernard', 'bernard.karl@parisdescartes.fr', 'bkarl', '098f6bcd4621d373cade4e832627b4f6', '40004000', '2018-09-10', '', 0),
 (3, 1, 2, 'Melle', 'Mozart', 'lea', 'lea.mozart@parisdescartes.fr', 'lmozart', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (4, 1, 4, 'M', 'Vincens', 'Bernard', 'bernard.vincens@parisdescartes.fr', 'bvincens', '098f6bcd4621d373cade4e832627b4f6', '12345678', '2018-09-10', '', 0),
-(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', './userdata/profile_pictures/22345678.png', 1),
+(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', './userdata/profile_pictures/22345678.png', 0),
 (6, 1, 6, 'Melle', 'Rey', 'Annie', 'arey@parisdecartes.fr', 'arey', '098f6bcd4621d373cade4e832627b4f6', '32345678', '2018-09-10', '', 0),
 (7, 1, 6, 'M', 'Tao', 'minh', 'mtao@parisdescartes.fr', 'mtao', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (8, 1, 7, 'M', 'Berger', 'Paul', 'pberger@parisdescartes.fr', 'pberger', '098f6bcd4621d373cade4e832627b4f6', '70000000', '2018-09-10', '', 0),
@@ -330,12 +330,12 @@ CREATE TABLE IF NOT EXISTS `matiere` (
 
 INSERT INTO `matiere` (`id_mat`, `id_ue`, `id_mod`, `id_period`, `nom`, `label`, `couleur`, `themes`, `typeEns`) VALUES
 (1, 1, 1, 1, 'Programmation WEB côté Serveur (M3104)', 'PWEB MVC', '#1DE124', '{\n\"web\":\"Client Serveur HTTP\", \n\"pattern\":\"MVC\",\n\"Langage\":\"PHP\"\n}\n', '{\n\"A\":[\"promo\", 1.5],\n\'M\':[\"bi\",3]\n}'),
-(2, 1, 1, 2, 'Programmation WEB côté Serveur - JAVA (M3104-2)', 'PWEB JAVA', '', '{\n\"Systeme WEB\":\"Client Serveur HTTP\", \n\"Langage\":\"JAVA\"\n}\n', '{\n\"A\":[\"promo\",1.5],\n\"M\":[\"bi\",3]\n}'),
-(9, 1, 1, 1, 'Algorithmique avancée', 'AAV', '', '{\"complexite\": \"tri\"}', '{\n\"A\":[\"promo\",1.5],\n\"T\":[\"bi\",1.5],\n\"M\":[\"mono\",1.5]\n}'),
-(14, 2, 1, 1, 'Anglais', 'ANG', '', '{\"theme\" : \"vocabulaire\"}', '{\"M\":[\"mono\",1.5]}'),
-(15, 2, 1, 1, 'Expression Communication', 'EC', '', '{\n\"expression\":\"écriture de rapport de stage\",\n\"communication\":\"soutenance orale\"\n}', '{\n\"T\":[\"bi\",1.5]\n}'),
-(16, 1, 1, 1, 'Modélisation Objet', 'MO', '', '{\"modele\" : \"UML\"}', '{\"A\":[\"promo\",1.5],\n\'M\':[\"bi\",3]\n}'),
-(17, 2, 1, 1, 'PROBA STAT', 'PS', '', '{\"proba\": [\"espace\"], \n\"stat\": [\"régression\"]}', '{ \"A\":[\"promo\",1.5], \"M\":[\"bi\",3] }');
+(2, 1, 1, 2, 'Programmation WEB côté Serveur - JAVA (M3104-2)', 'PWEB JAVA', '#0002E1', '{\n\"Systeme WEB\":\"Client Serveur HTTP\", \n\"Langage\":\"JAVA\"\n}\n', '{\n\"A\":[\"promo\",1.5],\n\"M\":[\"bi\",3]\n}'),
+(9, 1, 1, 1, 'Algorithmique avancée', 'AAV', '#c5e1a5', '{\"complexite\": \"tri\"}', '{\n\"A\":[\"promo\",1.5],\n\"T\":[\"bi\",1.5],\n\"M\":[\"mono\",1.5]\n}'),
+(14, 2, 1, 1, 'Anglais', 'ANG', '#ffab91', '{\"theme\" : \"vocabulaire\"}', '{\"M\":[\"mono\",1.5]}'),
+(15, 2, 1, 1, 'Expression Communication', 'EC', '#b47cff', '{\n\"expression\":\"écriture de rapport de stage\",\n\"communication\":\"soutenance orale\"\n}', '{\n\"T\":[\"bi\",1.5]\n}'),
+(16, 1, 1, 1, 'Modélisation Objet', 'MO', '#ffffcf', '{\"modele\" : \"UML\"}', '{\"A\":[\"promo\",1.5],\n\'M\':[\"bi\",3]\n}'),
+(17, 2, 1, 1, 'PROBA STAT', 'PS', '#ff7d47', '{\"proba\": [\"espace\"], \n\"stat\": [\"régression\"]}', '{ \"A\":[\"promo\",1.5], \"M\":[\"bi\",3] }');
 
 -- --------------------------------------------------------
 
@@ -382,15 +382,15 @@ CREATE TABLE IF NOT EXISTS `prof` (
 
 INSERT INTO `prof` (`id_prof`, `genre`, `nom`, `prenom`, `email`, `label`, `login_prof`, `pass_prof`, `date_prof`, `urlPhoto`, `couleur`, `bConnect`) VALUES
 (2, 'M', 'Ilié', 'Jean-Michel', 'jmilie@parisdescartes.fr', 'JMI', 'jmilie', '098f6bcd4621d373cade4e832627b4f6', '2018-09-12', './userdata/profile_pictures/.png', '#aab6fe', 0),
-(3, 'M', 'Foughali', 'Karim', 'kfoughali@gmail.com', 'KF', 'kfoughali', '098f6bcd4621d373cade4e832627b4f6', '2018-01-12', '', '#0002E1', 0),
-(4, 'M', 'Kurtz', 'Camille', 'ckurtz@parisdescartes.fr', 'CK', 'ckurtz', '098f6bcd4621d373cade4e832627b4f6', '2018-09-09', '', '#c5e1a5', 0),
-(5, 'M', 'Sortais', 'Michel', 'msortais@parisdescartes.fr', 'MS', 'msortais', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '#ffffcf', 0),
-(6, 'M', 'Ouziri', 'Mourad', 'mouziri@parisdescartes.fr', 'MO', 'mouziri', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '#ffab91', 0),
+(3, 'M', 'Foughali', 'Karim', 'kfoughali@gmail.com', 'KF', 'kfoughali', '098f6bcd4621d373cade4e832627b4f6', '2018-01-12', '', '', 0),
+(4, 'M', 'Kurtz', 'Camille', 'ckurtz@parisdescartes.fr', 'CK', 'ckurtz', '098f6bcd4621d373cade4e832627b4f6', '2018-09-09', '', '', 0),
+(5, 'M', 'Sortais', 'Michel', 'msortais@parisdescartes.fr', 'MS', 'msortais', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
+(6, 'M', 'Ouziri', 'Mourad', 'mouziri@parisdescartes.fr', 'MO', 'mouziri', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (7, 'Mme', 'Dirani', 'Hélène', 'hdirani@parisdescartes.fr', 'HD', 'hdirani', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (8, 'M', 'Poitrenaud', 'Denis', 'dpoitrenaud', 'DP', 'dpoitrenaud', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (9, 'Mme', 'Marechal', 'Laurence', 'lmarechal@parisdescartes.fr', 'LM', 'lmarechal', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (10, 'M', 'Oliviero', 'Philippe', 'poliviero@parisdescartes.fr', 'PhO', 'poliviero', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
-(255, 'M', 'test', 'test', 'test@test.com', 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', '2018-10-02', '', 'test', 0);
+(255, 'M', 'test', 'test', 'test@test.com', 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', '2018-10-02', '', '', 0);
 
 -- --------------------------------------------------------
 

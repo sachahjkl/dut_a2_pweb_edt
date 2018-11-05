@@ -6,7 +6,8 @@ function load()
     if (!isset($_SESSION["profile"])) {
         header('Location:./index.php');
     } else {
-        ("load" . $subaction)();
+        $func = "load" . $subaction;
+        $func();
     }
 }
 
@@ -68,7 +69,7 @@ function loadParamUtil()
 function loadNewPicture()
 {
     $target_dir    = "./userdata/profile_pictures/";
-    $target_file   = $target_dir . $_SESSION['profile']['matricule'] . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
+    $target_file   = $target_dir . $_SESSION['profile']['login_etu'] . "_" . date("Y_m_d_H_i_s") . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
     $uploadOk      = 1;
     $msg           = "";
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
