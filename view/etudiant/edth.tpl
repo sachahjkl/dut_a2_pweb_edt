@@ -23,6 +23,10 @@
 					</div>
 					<div class="row" style="position: relative;">
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php
+								for ($i = 0; $i < 22 ; $i++)
+									echo ("<hr class='my-0' style='width: 90%;margin: 0% 5%; position: absolute; top: ". (14 + $i * 30 )."px; left:0px;right:0px;'/>");
+							?>
 							<?php foreach ($lundi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
@@ -34,6 +38,10 @@
 							<?php endforeach ?>
 						</div>
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php
+								for ($i = 0; $i < 22 ; $i++)
+									echo ("<hr class='my-0' style='width: 90%;margin: 0% 5%; position: absolute; top: ". (14 + $i * 30 )."px; left:0px;right:0px;'/>");
+							?>
 							<?php foreach ($mardi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
@@ -45,6 +53,10 @@
 							<?php endforeach ?>
 						</div>
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php
+								for ($i = 0; $i < 22 ; $i++)
+									echo ("<hr class='my-0' style='width: 90%;margin: 0% 5%; position: absolute; top: ". (14 + $i * 30 )."px; left:0px;right:0px;'/>");
+							?>
 							<?php foreach ($mercredi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
@@ -56,6 +68,10 @@
 							<?php endforeach ?>
 						</div>
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php
+								for ($i = 0; $i < 22 ; $i++)
+									echo ("<hr class='my-0' style='width: 90%;margin: 0% 5%; position: absolute; top: ". (14 + $i * 30 )."px; left:0px;right:0px;'/>");
+							?>
 							<?php foreach ($jeudi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
@@ -67,6 +83,10 @@
 							<?php endforeach ?>
 						</div>
 						<div class="card col bg-light mx-1 shadow" style="min-height: 662px;">
+							<?php
+								for ($i = 0; $i < 22 ; $i++)
+									echo ("<hr class='my-0' style='width: 90%;margin: 0% 5%; position: absolute; top: ". (14 + $i * 30 )."px; left:0px;right:0px;'/>");
+							?>
 							<?php foreach ($vendredi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
