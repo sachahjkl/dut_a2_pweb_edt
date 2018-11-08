@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 05 nov. 2018 à 16:44
+-- Généré le :  jeu. 08 nov. 2018 à 16:15
 -- Version du serveur :  5.7.23
 -- Version de PHP :  5.6.38
 
@@ -196,14 +196,14 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 INSERT INTO `etudiant` (`id_etu`, `id_promo`, `id_grpe`, `genre`, `nom`, `prenom`, `email`, `login_etu`, `pass_etu`, `matricule`, `date_etu`, `urlPhoto`, `bConnect`) VALUES
 (1, 1, 1, 'Melle', 'Dahmani', 'Djaouida', 'ddahmani@parisdescartes.fr', 'ddahmani', '098f6bcd4621d373cade4e832627b4f6', '12345678', '2018-09-10', '', 0),
 (2, 1, 1, 'M', 'Karl', 'Bernard', 'bernard.karl@parisdescartes.fr', 'bkarl', '098f6bcd4621d373cade4e832627b4f6', '40004000', '2018-09-10', '', 0),
-(3, 1, 2, 'Melle', 'Mozart', 'lea', 'lea.mozart@parisdescartes.fr', 'lmozart', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
+(3, 1, 2, 'Melle', 'Mozart', 'Lea', 'lea.mozart@parisdescartes.fr', 'lmozart', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (4, 1, 4, 'M', 'Vincens', 'Bernard', 'bernard.vincens@parisdescartes.fr', 'bvincens', '098f6bcd4621d373cade4e832627b4f6', '12345678', '2018-09-10', '', 0),
-(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', './userdata/profile_pictures/22345678.png', 0),
+(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', './userdata/profile_pictures/alauzanne_2018_11_05_17_24_36.jpg', 1),
 (6, 1, 6, 'Melle', 'Rey', 'Annie', 'arey@parisdecartes.fr', 'arey', '098f6bcd4621d373cade4e832627b4f6', '32345678', '2018-09-10', '', 0),
-(7, 1, 6, 'M', 'Tao', 'minh', 'mtao@parisdescartes.fr', 'mtao', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
+(7, 1, 6, 'M', 'Tao', 'Minh', 'mtao@parisdescartes.fr', 'mtao', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (8, 1, 7, 'M', 'Berger', 'Paul', 'pberger@parisdescartes.fr', 'pberger', '098f6bcd4621d373cade4e832627b4f6', '70000000', '2018-09-10', '', 0),
-(9, 1, 8, 'Melle', 'Franceschinis', 'Octavia', 'ofranceschinis', 'ofrance', '098f6bcd4621d373cade4e832627b4f6', '46546545', '2018-09-10', './userdata/profile_pictures/46546545.png', 0),
-(10, 1, 4, 'Melle', 'test', 'test', 'test@', 'test', '098f6bcd4621d373cade4e832627b4f6', '20000000', '2018-09-10', './userdata/profile_pictures/20000000.jpg', 0);
+(9, 1, 8, 'Melle', 'Franceschinis', 'Octavia', 'ofranceschinis', 'ofrance', '098f6bcd4621d373cade4e832627b4f6', '46546545', '2018-09-10', '', 0),
+(10, 1, 4, 'Melle', 'test', 'test', 'test@', 'test', '098f6bcd4621d373cade4e832627b4f6', '20000000', '2018-09-10', '', 0);
 
 -- --------------------------------------------------------
 
@@ -381,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `prof` (
 --
 
 INSERT INTO `prof` (`id_prof`, `genre`, `nom`, `prenom`, `email`, `label`, `login_prof`, `pass_prof`, `date_prof`, `urlPhoto`, `couleur`, `bConnect`) VALUES
-(2, 'M', 'Ilié', 'Jean-Michel', 'jmilie@parisdescartes.fr', 'JMI', 'jmilie', '098f6bcd4621d373cade4e832627b4f6', '2018-09-12', './userdata/profile_pictures/.png', '#aab6fe', 0),
+(2, 'M', 'Ilié', 'Jean-Michel', 'jmilie@parisdescartes.fr', 'JMI', 'jmilie', '098f6bcd4621d373cade4e832627b4f6', '2018-09-12', './userdata/profile_pictures/jmilie_2018_11_05_16_51_31.png', '#aab6fe', 0),
 (3, 'M', 'Foughali', 'Karim', 'kfoughali@gmail.com', 'KF', 'kfoughali', '098f6bcd4621d373cade4e832627b4f6', '2018-01-12', '', '', 0),
 (4, 'M', 'Kurtz', 'Camille', 'ckurtz@parisdescartes.fr', 'CK', 'ckurtz', '098f6bcd4621d373cade4e832627b4f6', '2018-09-09', '', '', 0),
 (5, 'M', 'Sortais', 'Michel', 'msortais@parisdescartes.fr', 'MS', 'msortais', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
