@@ -13,11 +13,18 @@ function load()
 
 function loadEDTH()
 {
-    $selectedEDTH = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : 6;
+    $DEFAULT_EDTH         = 6;
+    $_GET["selectedEDTH"] = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : $DEFAULT_EDTH;
+    $nSelectedEDTH        = $_GET["selectedEDTH"];
     require './model/etudiant.php';
     getEDTHS($edth);
-    $edthN    = $edth[$selectedEDTH - 1];
-    $crenaux  = getCreneaux($selectedEDTH, $_SESSION['profile']['id_etu']);
+    foreach ($edth as $e) {
+        if ($e['id_edth'] == $nSelectedEDTH) {
+            $edthSelected = $e;
+            break;
+        }
+    }
+    $crenaux  = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_etu']);
     $lundi    = array();
     $mardi    = array();
     $mercredi = array();

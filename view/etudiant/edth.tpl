@@ -17,7 +17,7 @@
 					<div class="row">
 						<?php
 						for ($i = 0; $i < 5 ; $i++) {
-						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".strftime('%A %d/%m',(int)($edthN["tDeb"]+(86400*$i)))."</span></div>";
+						echo "<div class='col mx-1 mb-1 card bg-danger text-white h5 text-center shadow text-capitalize' role='alert' style='height: 50px;'><span class='my-auto'>".strftime('%A %d/%m',(int)($edthSelected["tDeb"]+(86400*$i)))."</span></div>";
 						}
 						?>
 					</div>
@@ -111,7 +111,7 @@
 					</div>
 					<select name="selectedEDTH" class="custom-select-sm" id="inputGroupSelect01">
 						<?php foreach ($edth as $v): ?>
-						<?php if ($v["id_edth"] == $edthN["id_edth"]): ?>
+						<?php if ($v["id_edth"] == $_GET['selectedEDTH']): ?>
 						<option selected value= <?=$v["id_edth"] ?>><?= $v["label"]?></option>
 						<?php else: ?>
 						<option value= <?=$v["id_edth"] ?>><?= $v["label"]?></option>

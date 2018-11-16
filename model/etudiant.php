@@ -3,7 +3,7 @@
 function getEDTHS(&$edth)
 {
     require './model/connectBD.php';
-    $sql = 'SELECT DISTINCT * FROM edth ORDER BY id_edth ASC';
+    $sql = 'SELECT DISTINCT * FROM edth WHERE bCourant = 1 ORDER BY id_edth ASC';
     try {
         $commande = $pdo->prepare($sql);
         $bool     = $commande->execute();
