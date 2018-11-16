@@ -16,8 +16,11 @@
       </li>
     </ul>
     <form class="form-inline">
+      <?php if ($_SESSION['profile']['couleur'] !=''): ?>
+        <div class="mr-2 rounded-circle shadow-sm" style ="background-color: <?= isset($_SESSION['profile']['couleur']) ? $_SESSION['profile']['couleur']  : '#f8f9fa' ;?>!important; width: 40px; height: 40px"></div>
+      <?php endif ?>
       <img class="mr-2 rounded-circle shadow-sm" style="object-fit: cover"src=<?= $_SESSION['profile']["urlPhoto"]== ''? ($_SESSION['profile']["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $_SESSION['profile']["urlPhoto"] ;?> width="40px" height="40px">
-      <label class="h5 mr-3 text-capitalize"> <?= $_SESSION['type'].": ".$_SESSION['profile']['genre'].". ".$_SESSION['profile']['prenom']." ".$_SESSION['profile']['nom']?></label>
+      <label class="h5 mr-3 text-capitalize"><?= $_SESSION['type'].": ".$_SESSION['profile']['genre'].". ".$_SESSION['profile']['prenom']." ".$_SESSION['profile']['nom']?></label>
       <input type="hidden" class="form-control" name="controle" value="connection">
       <button type="submit" class="btn btn-danger shadow-sm my-2 my-sm-0" name="action" value="disconnect">Déconnexion</button>
     </form>

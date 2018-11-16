@@ -43,11 +43,45 @@ function updatePicture($filePath, $idProf)
 function updatePwd($pwd, $idProf)
 {
     require './model/connectBD.php';
-    $sql = "UPDATE etudiant SET pass_prof=:pwd WHERE id_etu=:idProf";
+    $sql = "UPDATE professeur SET pass_prof=:pwd WHERE id_prof=:idProf";
     try {
         $commande = $pdo->prepare($sql);
-        $commande->bindParam(':idEtu', $idProf);
+        $commande->bindParam(':idProf', $idProf);
         $commande->bindParam(':pwd', $pwd);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    return $bool;
+}
+
+function getColors(&$colors)
+{
+    require './model/connectBD.php';
+    $sql = "SELECT couleur FROM prof";
+    try {
+        $commande = $pdo->prepare($sql);
+        $bool     = $commande->execute();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    $colors = $resultat;
+    return $bool;
+}
+
+function updateColor($color, $idProf)
+{
+    require './model/connectBD.php';
+    $sql = "UPDATE prof SET couleur=:color WHERE id_prof=:idProf";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':color', $color);
+        $commande->bindParam(':idProf', $idProf);
         $bool = $commande->execute();
     } catch (PDOException $e) {
         echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');

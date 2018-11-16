@@ -22,6 +22,8 @@ function loadParamUtil()
     $msgUpload = isset($_SESSION["msgUpload"]) ? $_SESSION["msgUpload"] : "";
     $msgPwd    = isset($_SESSION["msgPwd"]) ? $_SESSION["msgPwd"] : "";
     unset($_SESSION["msgUpload"]);
+    require './model/professeur.php';
+    getColors($colorsTaken);
     $chemin = './view/professeur/paramUtil.tpl';
     require './view/layout.tpl';
 }
@@ -104,6 +106,18 @@ function loadNewPassword()
         $_SESSION["msgPwd"] = "<div class='alert alert-success text-center mt-3 container mb-0' role='alert'>" . $msg . "</div>";
     } else {
         $_SESSION["msgPwd"] = "<div class='alert alert-danger text-center mt-3 container mb-0' role='alert'>" . $msg . "</div>";
+    }
+    header("Location:./index.php?controle=professeur&action=load&subaction=ParamUtil");
+}
+
+function loadUpdateColor()
+{
+    if (isset($_GET['newColor'])) {
+        $newColor = '#' . $_GET['newColor'];
+        require './model/professeur.php';
+        if (updateColor($newColor, $_SESSION['profile']['id_prof'])) {
+            $_SESSION['profile']['couleur'] = $newColor;
+        }
     }
     header("Location:./index.php?controle=professeur&action=load&subaction=ParamUtil");
 }
