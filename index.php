@@ -1,5 +1,5 @@
 <?php
-setlocale(LC_ALL, 'fr_FR');
+setlocale(LC_ALL, 'fr_FR.utf8', 'fra');
 header('content-type: text/html; charset=utf-8');
 session_start();
 if ((count($_GET) != 0) && (!isset($_GET['controle']) || !isset($_GET['action']))) {
