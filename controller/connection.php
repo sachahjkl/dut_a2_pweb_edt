@@ -22,12 +22,22 @@ function login()
             $_SESSION["type"]    = 'etudiant';
             setBConnectEtu($profile['id_etu'], 1);
             header("Location:./index.php?controle=etudiant&action=load");
+
+        } elseif (connectProf_resp($login, $pwd, $profile)) {
+            unset($_SESSION["profile"]);
+            $_SESSION["profile"] = $profile;
+            $_SESSION["type"]    = 'resp';
+            setBConnectProf($profile['id_prof'], 1);
+            header("Location:./index.php?controle=prof_resp&action=load");
+
         } elseif (connectProf($login, $pwd, $profile)) {
             unset($_SESSION["profile"]);
             $_SESSION["profile"] = $profile;
             $_SESSION["type"]    = 'professeur';
             setBConnectProf($profile['id_prof'], 1);
             header("Location:./index.php?controle=professeur&action=load");
+
+        
         } else {
             $msg    = "<div class='alert alert-danger mt-3' role='alert'>Identifiants incorrects. Veuillez reéssayer.</div>";
             $chemin = './view/connection/connect.tpl';
@@ -41,7 +51,12 @@ function disconnect()
     require './model/connection.php';
     if ($_SESSION['type'] == 'etudiant') {
         setBConnectEtu($_SESSION['profile']['id_etu'], 0);
+
     } elseif ($_SESSION['type'] == 'professeur') {
+        setBConnectProf($_SESSION['profile']['id_prof'], 0);
+        
+    }
+    elseif ($_SESSION['type'] == 'resp') {
         setBConnectProf($_SESSION['profile']['id_prof'], 0);
     }
     session_destroy();
