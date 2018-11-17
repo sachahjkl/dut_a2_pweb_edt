@@ -6,17 +6,25 @@ function load()
     if (!isset($_SESSION["profile"])) {
         header('Location:./index.php');
     } else {
-        ("load" . $subaction)();
+        $func = "load" . $subaction;
+        $func();
     }
 }
 
 function loadEDTH()
 {
-    $selectedEDTH = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : 6;
+    $DEFAULT_EDTH         = 6;
+    $_GET["selectedEDTH"] = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : $DEFAULT_EDTH;
+    $nSelectedEDTH        = $_GET["selectedEDTH"];
     require './model/etudiant.php';
     getEDTHS($edth);
-    $edthN    = $edth[$selectedEDTH - 1];
-    $crenaux  = getCreneaux($selectedEDTH, $_SESSION['profile']['id_etu']);
+    foreach ($edth as $e) {
+        if ($e['id_edth'] == $nSelectedEDTH) {
+            $edthSelected = $e;
+            break;
+        }
+    }
+    $crenaux  = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_etu']);
     $lundi    = array();
     $mardi    = array();
     $mercredi = array();
@@ -68,7 +76,7 @@ function loadParamUtil()
 function loadNewPicture()
 {
     $target_dir    = "./userdata/profile_pictures/";
-    $target_file   = $target_dir . $_SESSION['profile']['matricule'] . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
+    $target_file   = $target_dir . $_SESSION['profile']['login_etu'] . "_" . date("Y_m_d_H_i_s") . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
     $uploadOk      = 1;
     $msg           = "";
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -86,7 +94,7 @@ function loadNewPicture()
         $msg      = "Veuillez choisir un fichier avant d'envoyer.";
         $uploadOk = 0;
     } else if ($_FILES["newPP"]["size"] > ((int) (ini_get('upload_max_filesize')) * 1000000)) {
-        $msg      = "Désolé, le volume est trop volumineux.";
+        $msg      = "Désolé, le fichier est trop volumineux.";
         $uploadOk = 0;
     } else if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif") {
