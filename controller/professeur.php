@@ -6,12 +6,51 @@ function load()
     if (!isset($_SESSION["profile"])) {
         header('Location:./index.php');
     } else {
-        ("load" . $subaction)();
+        $func = "load" . $subaction;
+        $func();
     }
 }
 
 function loadEDTH()
 {
+    $DEFAULT_EDTH         = 6;
+    $_GET["selectedEDTH"] = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : $DEFAULT_EDTH;
+    $nSelectedEDTH        = $_GET["selectedEDTH"];
+    require './model/professeur.php';
+    getEDTHS($edth);
+    foreach ($edth as $e) {
+        if ($e['id_edth'] == $nSelectedEDTH) {
+            $edthSelected = $e;
+            break;
+        }
+}
+    $crenaux  = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_prof']);
+    $lundi    = array();
+    $mardi    = array();
+    $mercredi = array();
+    $jeudi    = array();
+    $vendredi = array();
+    foreach ($crenaux as $v) {
+        switch (date("N", $v["tDeb"])) {
+            case 1:
+                $lundi[] = $v;
+                break;
+            case 2:
+                $mardi[] = $v;
+                break;
+            case 3:
+                $mercredi[] = $v;
+                break;
+            case 4:
+                $jeudi[] = $v;
+                break;
+            case 5:
+                $vendredi[] = $v;
+                break;
+            default:
+                break;
+        }
+    }
     $chemin = './view/professeur/edth.tpl';
     require './view/layout.tpl';
 }
@@ -21,6 +60,8 @@ function loadParamUtil()
     $msgUpload = isset($_SESSION["msgUpload"]) ? $_SESSION["msgUpload"] : "";
     $msgPwd    = isset($_SESSION["msgPwd"]) ? $_SESSION["msgPwd"] : "";
     unset($_SESSION["msgUpload"]);
+    require './model/professeur.php';
+    getColors($colorsTaken);
     $chemin = './view/professeur/paramUtil.tpl';
     require './view/layout.tpl';
 }
@@ -28,7 +69,7 @@ function loadParamUtil()
 function loadNewPicture()
 {
     $target_dir    = "./userdata/profile_pictures/";
-    $target_file   = $target_dir . $_SESSION['profile']['matricule'] . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
+    $target_file   = $target_dir . $_SESSION['profile']['login_prof'] . "_" . date("Y_m_d_H_i_s") . "." . pathinfo($_FILES["newPP"]["name"], PATHINFO_EXTENSION);
     $uploadOk      = 1;
     $msg           = "";
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -105,4 +146,37 @@ function loadNewPassword()
         $_SESSION["msgPwd"] = "<div class='alert alert-danger text-center mt-3 container mb-0' role='alert'>" . $msg . "</div>";
     }
     header("Location:./index.php?controle=professeur&action=load&subaction=ParamUtil");
+}
+
+function loadUpdateColor()
+{
+    if (isset($_GET['newColor'])) {
+        $newColor = '#' . $_GET['newColor'];
+        require './model/professeur.php';
+        if (updateColor($newColor, $_SESSION['profile']['id_prof'])) {
+            $_SESSION['profile']['couleur'] = $newColor;
+        }
+    }
+    header("Location:./index.php?controle=professeur&action=load&subaction=ParamUtil");
+}
+
+function loadListProf()
+{
+    $listProf = array();
+    require './model/etudiant.php';
+    getProfsRoles($profRoles);
+    $chemin = './view/professeur/listProf.tpl';
+    require './view/layout.tpl';
+}
+
+function loadEtudiant()
+{
+    $DEFAULT_GRP         = 1;
+    $_GET['selectedGrp'] = isset($_GET['selectedGrp']) ? $_GET['selectedGrp'] : $DEFAULT_GRP;
+    $grp                 = $_GET['selectedGrp'];
+    require './model/professeur.php';
+    getGrps($grps);
+    getEtudiantsGrp($etusGrp, $grp);
+    $chemin = './view/professeur/rechercheEtudiant.tpl';
+    require './view/layout.tpl';
 }
