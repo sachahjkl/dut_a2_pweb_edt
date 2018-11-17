@@ -51,7 +51,7 @@ function connectProf($login, $pwdMD5, &$profile)
 }
 
 
-function connectGerant($login, $pwdMD5, &$profile)
+function connectProf_resp($login, $pwdMD5, &$profile)
 {
     require './model/connectBD.php';
     $sql = 'SELECT * FROM prof P INNER JOIN prof_roles PR ON PR.id_prof = P.id_prof where login_prof=:login and pass_prof=:pwd AND bResp=1';
