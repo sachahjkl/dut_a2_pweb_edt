@@ -8,11 +8,12 @@
 					<form class="form-check" action ="./index.php" method="get">
 						<input type="hidden" name="controle" value="professeur">
 						<input type="hidden" name="action" value="load">
+						<input type="hidden" name="subaction" value="Etudiant">
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<label class="input-group-text form-control" for="inputGroupSelect01">Choix du groupe</label>
 							</div>
-							<select name="selectedGrp" class="custom-select" id="inputGroupSelect01">
+							<select onchange="this.form.submit()" name="selectedGrp" class="custom-select" id="inputGroupSelect01">
 								<?php foreach ($grps as $g): ?>
 								<?php if ($g['id_grpe'] == $_GET['selectedGrp']): ?>
 								<option selected value= <?=$g["id_grpe"] ?>><?= $g["num_grpe"]?></option>
@@ -21,9 +22,6 @@
 								<?php endif ?>
 								<?php endforeach ?>
 							</select>
-							<div class="input-group-append">
-								<button type="submit" class="btn btn-secondary btn "name="subaction" value="Etudiant">Afficher Etudiants</button>
-							</div>
 						</div>
 					</form>
 					

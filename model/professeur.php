@@ -134,3 +134,65 @@ function getEtudiantsGrp(&$etusGrp, $grp)
     $etusGrp = $resultat;
     return $bool;
 }
+
+function getProfs(&$profs, $exception)
+{
+    require './model/connectBD.php';
+    $sql = "SELECT id_prof, genre, nom, prenom, email, couleur, bConnect FROM prof
+    WHERE id_prof != :exception
+    ORDER BY id_prof";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':exception', $exception);
+        $bool     = $commande->execute();
+        $resultat = array();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    $profs = $resultat;
+    return $bool;
+}
+
+function getMessages($src, $dest, &$messages)
+{
+    require './model/connectBD.php';
+    $sql = "SELECT * FROM message
+    WHERE (id_src = :src AND id_dest = :dest) OR (id_src = :dest AND id_dest = :src)
+    ORDER BY id_msg";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':src', $src);
+        $commande->bindParam(':dest', $dest);
+        $bool     = $commande->execute();
+        $resultat = array();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    $messages = $resultat;
+    return $bool;
+}
+
+function sendMessage($src, $dest, $message)
+{
+    require './model/connectBD.php';
+    $sql = "INSERT INTO message (typeMsg, id_src, id_dest, contenu) VALUES (1,:src,:dest,:message)";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':src', $src);
+        $commande->bindParam(':dest', $dest);
+        $commande->bindParam(':message', $message);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode("Echec de la requête: " . $e->getMessage() . "\n");
+        die(); // On arrête tout.
+    }
+    return $bool;
+}

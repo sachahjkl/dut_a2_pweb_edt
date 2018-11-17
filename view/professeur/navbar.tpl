@@ -14,6 +14,11 @@
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Etudiant">Recherche d'étudiant</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Chat">Chat</a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ParamUtil">Paramètres utilisateur</a>
       </li>

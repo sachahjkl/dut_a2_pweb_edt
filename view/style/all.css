@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+html {
+  scroll-behavior: smooth;
+}
+
 .lato {
 	font-family: 'Lato', sans-serif;
 }

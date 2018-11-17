@@ -3,7 +3,7 @@
 function load()
 {
     $subaction = isset($_GET['subaction']) ? $_GET['subaction'] : 'EDTH';
-    if (!isset($_SESSION["profile"])) {
+    if (!isset($_SESSION["profile"]) || $_SESSION["type"] != "etudiant") {
         header('Location:./index.php');
     } else {
         $func = "load" . $subaction;

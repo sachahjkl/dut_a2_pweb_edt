@@ -3,7 +3,7 @@
 function load()
 {
     $subaction = isset($_GET['subaction']) ? $_GET['subaction'] : 'EDTH';
-    if (!isset($_SESSION["profile"])) {
+    if (!isset($_SESSION["profile"]) || $_SESSION["type"] != "professeur") {
         header('Location:./index.php');
     } else {
         $func = "load" . $subaction;
@@ -141,4 +141,42 @@ function loadEtudiant()
     getEtudiantsGrp($etusGrp, $grp);
     $chemin = './view/professeur/rechercheEtudiant.tpl';
     require './view/layout.tpl';
+}
+
+function loadChat()
+{
+    $DEFAULT_PROF  = $_SESSION['profile']['id_prof'] == 1 ? 2 : 1;
+    $DEFAULT_COLOR = "#fafafa";
+    $msg           = isset($_SESSION['msg']) ? $_SESSION['msg'] : "";
+    require './model/professeur.php';
+    getProfs($profs, $_SESSION['profile']['id_prof']);
+    $_GET['selectedProf'] = isset($_GET['selectedProf']) ? $_GET['selectedProf'] : (isset($profs[0]) ? $profs[0]['id_prof'] : $DEFAULT_PROF);
+    $idProfDest           = $_GET['selectedProf'];
+    $profDest             = null;
+    foreach ($profs as $p) {
+        if ($p['id_prof'] == $idProfDest) {
+            $profDest = $p;
+            break;
+        }
+    }
+    getMessages($_SESSION['profile']['id_prof'], $idProfDest, $messages);
+    $chemin = './view/professeur/chat.tpl';
+    require './view/layout.tpl';
+}
+
+function loadSendMessage()
+{
+    $DEFAULT_PROF = $_SESSION['profile']['id_prof'] == 1 ? 2 : 1;
+    $dest         = isset($_GET['selectedProf']) ? $_GET['selectedProf'] : $DEFAULT_PROF;
+    if (isset($_GET['selectedProf'])) {
+        $message         = $_GET['message'];
+        $_SESSION["msg"] = $message;
+        if ($message != '') {
+            require './model/professeur.php';
+            if (sendMessage($_SESSION['profile']['id_prof'], $dest, $message)) {
+                unset($_SESSION["msg"]);
+            }
+        }
+    }
+    header('Location:./index.php?controle=professeur&action=load&subaction=Chat&selectedProf=' . $dest);
 }
