@@ -3,7 +3,7 @@
 function getEDTHS(&$edth)
 {
     require './model/connectBD.php';
-    $sql = 'SELECT DISTINCT * FROM edth ORDER BY id_edth ASC';
+    $sql = 'SELECT DISTINCT * FROM edth WHERE bCourant = 1 ORDER BY id_edth ASC';
     try {
         $commande = $pdo->prepare($sql);
         $bool     = $commande->execute();
@@ -76,7 +76,7 @@ function updatePwd($pwd, $idEtu)
 function getProfsRoles(&$profRoles)
 {
     require './model/connectBD.php';
-    $sql = "SELECT PR.id_objet, PR.label, P.genre, P.nom, P.prenom, P.email FROM prof P INNER JOIN prof_roles PR ON P.id_prof = PR.id_prof ORDER BY PR.id_objet";
+    $sql = "SELECT P.id_prof, PR.id_objet, PR.label, P.genre, P.nom, P.prenom, P.email FROM prof P INNER JOIN prof_roles PR ON P.id_prof = PR.id_prof ORDER BY PR.id_objet";
     try {
         $commande = $pdo->prepare($sql);
         $bool     = $commande->execute();
