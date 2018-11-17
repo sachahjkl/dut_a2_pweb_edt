@@ -121,3 +121,24 @@ function loadUpdateColor()
     }
     header("Location:./index.php?controle=professeur&action=load&subaction=ParamUtil");
 }
+
+function loadListProf()
+{
+    $listProf = array();
+    require './model/etudiant.php';
+    getProfsRoles($profRoles);
+    $chemin = './view/professeur/listProf.tpl';
+    require './view/layout.tpl';
+}
+
+function loadEtudiant()
+{
+    $DEFAULT_GRP         = 1;
+    $_GET['selectedGrp'] = isset($_GET['selectedGrp']) ? $_GET['selectedGrp'] : $DEFAULT_GRP;
+    $grp                 = $_GET['selectedGrp'];
+    require './model/professeur.php';
+    getGrps($grps);
+    getEtudiantsGrp($etusGrp, $grp);
+    $chemin = './view/professeur/rechercheEtudiant.tpl';
+    require './view/layout.tpl';
+}

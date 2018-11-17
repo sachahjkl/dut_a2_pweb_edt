@@ -101,7 +101,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="mt-4 alert alert-light shadow-dark" role="alert">
+		<div class="mt-4 alert alert-light shadow" role="alert">
 			<form class="form-check"action ="./index.php" method="get">
 				<input type="hidden" name="controle" value="etudiant">
 				<input type="hidden" name="action" value="load">

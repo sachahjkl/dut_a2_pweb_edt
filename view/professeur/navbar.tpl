@@ -9,7 +9,10 @@
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=EDTH">EDTH</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./index.php?controle=professeur&action=load">Liste professeurs</a>
+        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ListProf">Liste professeurs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Etudiant">Recherche d'étudiant</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ParamUtil">Paramètres utilisateur</a>
@@ -17,7 +20,7 @@
     </ul>
     <form class="form-inline">
       <?php if ($_SESSION['profile']['couleur'] !=''): ?>
-        <div class="mr-2 rounded-circle shadow-sm" style ="background-color: <?= isset($_SESSION['profile']['couleur']) ? $_SESSION['profile']['couleur']  : '#f8f9fa' ;?>!important; width: 40px; height: 40px"></div>
+      <div class="mr-2 rounded-circle shadow-sm" style ="background-color: <?= isset($_SESSION['profile']['couleur']) ? $_SESSION['profile']['couleur']  : '#f8f9fa' ;?>!important; width: 40px; height: 40px"></div>
       <?php endif ?>
       <img class="mr-2 rounded-circle shadow-sm" style="object-fit: cover"src=<?= $_SESSION['profile']["urlPhoto"]== ''? ($_SESSION['profile']["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $_SESSION['profile']["urlPhoto"] ;?> width="40px" height="40px">
       <label class="h5 mr-3 text-capitalize"><?= $_SESSION['type'].": ".$_SESSION['profile']['genre'].". ".$_SESSION['profile']['prenom']." ".$_SESSION['profile']['nom']?></label>

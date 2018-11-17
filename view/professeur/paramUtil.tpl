@@ -74,7 +74,7 @@
 					</div>
 					<div class="card mt-4">
 						<div class="card-body">
-							<h5 class="card-title">Choix de votre couleur</h5>
+							<h5 class="card-title">Choix de votre couleur :</h5>
 							<div class="row card-text">
 								<?php if ($_SESSION['profile']['couleur'] != ''): ?>
 								<p class=" ml-3 card-text font-weight-bold">couleur actuelle : </p>
