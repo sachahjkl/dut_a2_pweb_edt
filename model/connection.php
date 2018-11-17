@@ -50,6 +50,49 @@ function connectProf($login, $pwdMD5, &$profile)
     }
 }
 
+
+function connectGerant($login, $pwdMD5, &$profile)
+{
+    require './model/connectBD.php';
+    $sql = 'SELECT * FROM prof P INNER JOIN prof_roles PR ON PR.id_prof = P.id_prof where login_prof=:login and pass_prof=:pwd AND bResp=1';
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':login', $login);
+        $commande->bindParam(':pwd', $pwdMD5);
+        $bool     = $commande->execute();
+        $resultat = array();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    if (count($resultat) == 0) {
+        return false;
+    } else {
+        $profile = $resultat[0];
+        return true;
+    }
+}
+
+function setBConnectGerant($idProf, $bconnect)
+{
+    require './model/connectBD.php';
+    $bool = false;
+    $sql  = 'UPDATE prof SET bConnect = :bconnect WHERE id_prof=:idProf';
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':bconnect', $bconnect);
+        $commande->bindParam(':idProf', $idProf);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    return $bool;
+}
+
 function setBConnectProf($idProf, $bconnect)
 {
     require './model/connectBD.php';
