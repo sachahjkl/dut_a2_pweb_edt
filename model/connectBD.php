@@ -1,9 +1,9 @@
 <?php
 
 $hostname = "localhost"; //ou localhost
-$base     = "pweb18_";
-$loginBD  = "pweb18_froment"; //ou "root"
-$passBD   = "25051999";
+$base     = "pweb2";
+$loginBD  = "root"; //ou "root"
+$passBD   = "";
 $pdo      = null;
 try {
     $pdo = new PDO("mysql:server=$hostname; dbname=$base; charset=UTF8", "$loginBD", "$passBD");
