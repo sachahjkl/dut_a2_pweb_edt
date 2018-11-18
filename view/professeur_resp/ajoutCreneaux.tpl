@@ -5,7 +5,7 @@
 			<div class="card shadow">
 				<h5 class="card-header ">Ajout de creneaux :</h5>
 				<div class="card-body">
-					<?= var_dump($_SESSION['profile']['roles'])?>
+					<?= var_dump($_SESSION['profile']['roles'], $_SESSION['profile']['gerant'])?>
 				</div>
 			</div>
 		</div>

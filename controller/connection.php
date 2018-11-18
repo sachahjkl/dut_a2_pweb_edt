@@ -29,6 +29,7 @@ function login()
             setBConnectProf($profile['id_prof'], 1);
             require './model/professeur.php';
             if (loadRoleResp($profile['id_prof'], $roles)) {
+                $_SESSION['profile']['gerant'] = false;
                 foreach ($roles as $r) {
                     if ($r['objet'] == 'edt') {
                         $_SESSION['profile']['gerant'] = true;

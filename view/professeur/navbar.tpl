@@ -4,12 +4,12 @@
   <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="nav navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=EDTH">EDTH</a>
       </li>
       <li class="mx-1 nav-item dropdown">
-        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Listes</button>
+        <button class="btn btn-light nav-item nav-link dropdown-toggle" type="button" data-toggle="dropdown">Listes</button>
         <ul class="dropdown-menu">
           <li class="dropdown-item nav-item">
             <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ListProf">Liste professeurs</a>
@@ -20,7 +20,7 @@
         </ul>
       </li>
       <li class="mx-1 nav-item dropdown">
-        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Gestion</button>
+        <button class="btn btn-light nav-item nav-link dropdown-toggle" type="button" data-toggle="dropdown">Gestion</button>
         <ul class="dropdown-menu">
           <li class="dropdown-item nav-item">
             <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Chat">Chat</a>
