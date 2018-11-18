@@ -24,13 +24,13 @@ function loadEDTH()
             break;
         }
     }
-    $crenaux  = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_etu']);
+    $creneaux = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_etu']);
     $lundi    = array();
     $mardi    = array();
     $mercredi = array();
     $jeudi    = array();
     $vendredi = array();
-    foreach ($crenaux as $v) {
+    foreach ($creneaux as $v) {
         switch (date("N", $v["tDeb"])) {
             case 1:
                 $lundi[] = $v;

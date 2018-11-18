@@ -13,6 +13,44 @@ function load()
 
 function loadEDTH()
 {
+    $DEFAULT_EDTH         = 6;
+    $_GET["selectedEDTH"] = isset($_GET["selectedEDTH"]) ? $_GET["selectedEDTH"] : $DEFAULT_EDTH;
+    $nSelectedEDTH        = $_GET["selectedEDTH"];
+    require './model/professeur.php';
+    getEDTHS($edth);
+    foreach ($edth as $e) {
+        if ($e['id_edth'] == $nSelectedEDTH) {
+            $edthSelected = $e;
+            break;
+        }
+    }
+    $creneaux = getCreneaux($nSelectedEDTH, $_SESSION['profile']['id_prof']);
+    $lundi    = array();
+    $mardi    = array();
+    $mercredi = array();
+    $jeudi    = array();
+    $vendredi = array();
+    foreach ($creneaux as $v) {
+        switch (date("N", $v["tDeb"])) {
+            case 1:
+                $lundi[] = $v;
+                break;
+            case 2:
+                $mardi[] = $v;
+                break;
+            case 3:
+                $mercredi[] = $v;
+                break;
+            case 4:
+                $jeudi[] = $v;
+                break;
+            case 5:
+                $vendredi[] = $v;
+                break;
+            default:
+                break;
+        }
+    }
     $chemin = './view/professeur/edth.tpl';
     require './view/layout.tpl';
 }

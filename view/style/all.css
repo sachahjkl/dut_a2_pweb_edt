@@ -26,22 +26,28 @@ body {
 }
 
 @media screen and (min-width:100px) {
-	body {
-		font-size: 0.8em
+	body, h5.creneau {
+		font-size: 0.8em ;
 	}
-
+h5.creneau{
+	font-size: 15px ;
+}
 }
 
 @media screen and (min-width:1020px) {
 	body {
-		font-size: 0.9em
+		font-size: 0.9em ;
 	}
-
+h5.creneau{
+	font-size: 15px ;
+}
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width:1250px) {
 	body {
-		font-size: 1em
+		font-size: 1em;
 	}
-
+	h5.creneau{
+	font-size: 1.2vw ;
+	}
 }

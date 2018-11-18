@@ -27,6 +27,16 @@ function login()
             $_SESSION["profile"] = $profile;
             $_SESSION["type"]    = 'professeur';
             setBConnectProf($profile['id_prof'], 1);
+            require './model/professeur.php';
+            if (loadRoleResp($profile['id_prof'], $roles)) {
+                foreach ($roles as $r) {
+                    if ($r['objet'] == 'edt') {
+                        $_SESSION['profile']['gerant'] = true;
+                        break;
+                    }
+                }
+                $_SESSION['profile']['roles'] = $roles;
+            }
             header("Location:./index.php?controle=professeur&action=load");
         } else {
             $msg    = "<div class='alert alert-danger mt-3' role='alert'>Identifiants incorrects. Veuillez reéssayer.</div>";

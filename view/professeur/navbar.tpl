@@ -8,17 +8,30 @@
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=EDTH">EDTH</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ListProf">Liste professeurs</a>
+      <li class="mx-1 nav-item dropdown">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Listes</button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ListProf">Liste professeurs</a>
+          </li>
+          <li class=" dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Etudiant">Recherche d'étudiant</a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Etudiant">Recherche d'étudiant</a>
+      <li class="mx-1 nav-item dropdown">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Gestion</button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Chat">Chat</a>
+          </li>
+          <?php if (isset($_SESSION['profile']['roles'])): ?>
+          <li class=" dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=professeur_resp&action=load&subaction=AjoutCreneaux">Ajout de creneaux</a>
+          </li>
+          <?php endif ?>
+        </ul>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Chat">Chat</a>
-      </li>
-
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=ParamUtil">Paramètres utilisateur</a>
       </li>

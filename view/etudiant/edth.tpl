@@ -33,7 +33,7 @@
 								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -48,7 +48,7 @@
 								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -63,7 +63,7 @@
 								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -78,7 +78,7 @@
 								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -93,7 +93,7 @@
 								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -109,7 +109,7 @@
 					<div class="input-group-prepend">
 						<label class="input-group-text form-control-sm" for="inputGroupSelect01">EDTH N°</label>
 					</div>
-					<select name="selectedEDTH" class="custom-select-sm" id="inputGroupSelect01">
+					<select onchange="this.form.submit()"name="selectedEDTH" class="custom-select-sm rounded-right" id="inputGroupSelect01">
 						<?php foreach ($edth as $v): ?>
 						<?php if ($v["id_edth"] == $_GET['selectedEDTH']): ?>
 						<option selected value= <?=$v["id_edth"] ?>><?= $v["label"]?></option>
@@ -118,9 +118,6 @@
 						<?php endif ?>
 						<?php endforeach ?>
 					</select>
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-secondary btn-sm "name="subaction" value="EDTH">Charger</button>
-					</div>
 				</form>
 			</div>
 		</div>
