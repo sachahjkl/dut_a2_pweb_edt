@@ -30,9 +30,9 @@
 							<?php foreach ($lundi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
-								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
-								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
+								<div class="card d-flestrftime("%k" texH-center " style="background-color: <?=$couleur?>;heistrftime <%M=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
@@ -45,7 +45,7 @@
 							<?php foreach ($mardi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
-								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
@@ -60,7 +60,7 @@
 							<?php foreach ($mercredi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
-								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
@@ -75,7 +75,7 @@
 							<?php foreach ($jeudi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
-								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
@@ -90,7 +90,7 @@
 							<?php foreach ($vendredi as $v):
 								$couleur = $v['couleur'] == ""? "#c7c7c7" :$v['couleur'];
 								$h = ($v["tFin"] - $v["tDeb"])/60 - 3;
-								$top = 16 + (int)date("G",$v["tDeb"])*60 + (int)date("i",$v["tDeb"]) - 480;
+								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
 									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
