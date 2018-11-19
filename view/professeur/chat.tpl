@@ -40,6 +40,7 @@
 							<div class="row" style="width: 99%">
 								<div class="col ml-5 m-1 mt-3 rounded border shadow-sm" style="min-height: 70px;
 								background-color: <?= $profDest['couleur']!='' ? $profDest['couleur']  : $DEFAULT_COLOR ;?>">
+									<img class="mr-2 rounded-circle shadow-sm float-left mt-1" style="object-fit: cover"src=<?= $profDest["urlPhoto"]== ''? ($profDest["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $profDest["urlPhoto"] ;?> width="40px" height="40px">
 									<p class="m-2"><?= $m['contenu']?></p>
 								</div>
 								<div class="col-7"></div>
@@ -50,6 +51,7 @@
 								<div class="col m-1 mt-3  rounded border shadow-sm" style="min-height: 70px;
 								background-color: <?= $_SESSION['profile']['couleur']!='' ? $_SESSION['profile']['couleur']  : $DEFAULT_COLOR ;?>">
 									<p class="m-2"><?= $m['contenu']?></p>
+									<img class="mr-2 rounded-circle shadow-sm float-right mb-1" style="object-fit: cover"src=<?= $_SESSION['profile']["urlPhoto"]== ''? ($_SESSION['profile']["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $_SESSION['profile']["urlPhoto"] ;?> width="40px" height="40px">
 								</div>
 							</div>
 							<?php endif ?>
