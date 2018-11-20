@@ -133,6 +133,7 @@ function updateColor($color, $idProf)
     return $bool;
 }
 
+
 function getGrps(&$grps)
 {
     require './model/connectBD.php';
@@ -174,5 +175,22 @@ function getEtudiantsGrp(&$etusGrp, $grp)
         die(); // On arrête tout.
     }
     $etusGrp = $resultat;
+    return $bool;
+}
+
+
+
+function updateLabel($idProf,$label){
+     require './model/connectBD.php';
+    $sql = "UPDATE matiere,prof_roles SET matiere.label=:label WHERE prof_roles.bResp=1 AND matiere.id_mat=prof_roles.id_objet AND prof_roles.id_prof=:idProf";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':label', $label);
+        $commande->bindParam(':idProf', $idProf);
+        $bool = $commande->execute();
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
     return $bool;
 }
