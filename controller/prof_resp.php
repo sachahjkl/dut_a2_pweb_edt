@@ -182,3 +182,15 @@ function loadEtudiant()
     require './view/layout.tpl';
 }
 
+
+function loadLabel(){
+      if (isset($_GET['label'])) { 
+        $label =$_GET['label'];
+        require './model/prof_resp.php';
+        if (updateLabel($_SESSION['profile']['id_prof'],$label)) {
+            $_SESSION['profile']['label'] = $label;
+        }
+    }
+   $chemin = './view/prof_resp/changeLabel.tpl';
+    require './view/layout.tpl';
+}
