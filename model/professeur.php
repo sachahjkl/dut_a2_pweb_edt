@@ -3,11 +3,11 @@
 function loadRoleResp($idProf, &$roles)
 {
     require './model/connectBD.php';
-    $sql = "SELECT * FROM prof_roles WHERE id_prof=:idProf AND bResp = 1";
+    $sql = "SELECT * FROM prof_roles P INNER JOIN matiere M ON M.id_mat = P.id_objet WHERE id_prof=:idProf AND bResp = 1";
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idProf', $idProf);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ function getEDTHS(&$edth)
     $sql = "SELECT DISTINCT * FROM edth WHERE bCourant = 1 ORDER BY id_edth ASC";
     try {
         $commande = $pdo->prepare($sql);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ function getCreneaux($idEDTH, $idProf)
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idEDTH', $idEDTH);
         $commande->bindParam(':idProf', $idProf);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -104,7 +104,7 @@ function getColors(&$colors)
     $sql = "SELECT couleur FROM prof";
     try {
         $commande = $pdo->prepare($sql);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -141,7 +141,7 @@ function getGrps(&$grps)
     ORDER BY id_grpe";
     try {
         $commande = $pdo->prepare($sql);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -164,7 +164,7 @@ function getEtudiantsGrp(&$etusGrp, $grp)
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':grp', $grp);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -186,7 +186,7 @@ function getProfs(&$profs, $exception)
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':exception', $exception);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
@@ -209,7 +209,7 @@ function getMessages($src, $dest, &$messages)
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':src', $src);
         $commande->bindParam(':dest', $dest);
-        $bool = $commande->execute();
+        $bool     = $commande->execute();
         $resultat = array();
         if ($bool) {
             $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);

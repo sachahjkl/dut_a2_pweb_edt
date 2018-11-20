@@ -26,9 +26,15 @@
             <a class="nav-link" href="./index.php?controle=professeur&action=load&subaction=Chat">Chat</a>
           </li>
           <?php if (isset($_SESSION['profile']['roles'])): ?>
-          <li class=" dropdown-item nav-item">
-            <a class="nav-link" href="./index.php?controle=professeur_resp&action=load&subaction=AjoutCreneaux">Ajout de creneaux</a>
+          <?php if ($_SESSION['profile']['gerant']): ?>
+            <li class=" dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=gerant&action=load&subaction=Creneaux">Creneaux</a>
           </li>
+          <?php else:?>
+            <li class=" dropdown-item nav-item">
+            <a class="nav-link" href="./index.php?controle=professeur_resp&action=load&subaction=Creneaux">Creneaux</a>
+          </li>
+          <?php endif ?>
           <?php endif ?>
         </ul>
       </li>

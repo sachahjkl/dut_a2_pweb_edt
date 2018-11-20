@@ -33,7 +33,7 @@
 								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center p-0"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -48,7 +48,7 @@
 								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center p-0"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -63,7 +63,7 @@
 								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center p-0"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -78,7 +78,7 @@
 								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center p-0"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>
@@ -93,7 +93,7 @@
 								$top = 16 + (int)strftime("%H",$v["tDeb"])*60 + (int)strftime("%M",$v["tDeb"]) - 480;
 							?>
 								<div class="card d-flex shadow text-center " style="background-color: <?=$couleur?>;height: <?=$h?>px;top: <?= $top?>px;left: 0; position: absolute; width: 90%; margin: 0 5%">
-									<div class="card-body align-items-center d-flex justify-content-center"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
+									<div class="card-body align-items-center d-flex justify-content-center p-0"><h5 class="card-title creneau mb-0"><?= $v['pLabel']?> - <?=$v['mLabel']?> <?=$v['sType']?> <?=$v['sLabel']?> <?=$v['num_grpe']?></h5></div>
 								</div>
 							<?php endforeach ?>
 						</div>

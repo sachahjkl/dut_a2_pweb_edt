@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 .lato {
@@ -14,7 +14,7 @@ html {
 
 .calendar_back {
 	background: url("../images/back_choix.jpg") no-repeat center fixed !important;
-	background-size: cover;
+	background-size: cover!important;
 }
 
 body {
@@ -26,28 +26,22 @@ body {
 }
 
 @media screen and (min-width:100px) {
-	body, h5.creneau {
-		font-size: 0.8em ;
+	h5.creneau {
+		font-size: 15px;
 	}
-h5.creneau{
-	font-size: 15px ;
-}
+
 }
 
 @media screen and (min-width:1020px) {
-	body {
-		font-size: 0.9em ;
+	h5.creneau {
+		font-size: 15px;
 	}
-h5.creneau{
-	font-size: 15px ;
-}
+
 }
 
 @media screen and (min-width:1250px) {
-	body {
-		font-size: 1em;
+	h5.creneau {
+		font-size: 20px;
 	}
-	h5.creneau{
-	font-size: 1.2vw ;
-	}
+
 }
