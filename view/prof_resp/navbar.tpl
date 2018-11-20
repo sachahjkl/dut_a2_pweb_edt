@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow">
-  <a class="navbar-brand" href="./index.php?controle=professeur&action=load"><img src="./bootstrap/svg/calendar.svg" height="30px"></a>
+  <a class="navbar-brand" href="./index.php?controle=prof_resp&action=load"><img src="./bootstrap/svg/calendar.svg" height="30px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,6 +13,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=prof_resp&action=load&subaction=Etudiant">Recherches élèves</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./index.php?controle=prof_resp&action=load&subaction=Label">Modifier le label</a>
+      </li>
+           <li class="nav-item">
+        <a class="nav-link" href="./index.php?controle=prof_resp&action=load&subaction=TypeEns">Modifier le type</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./index.php?controle=prof_resp&action=load&subaction=ParamUtil">Paramètres utilisateur</a>
