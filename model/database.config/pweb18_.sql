@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 18 nov. 2018 à 14:20
+-- Généré le :  mer. 21 nov. 2018 à 21:49
 -- Version du serveur :  5.7.23
 -- Version de PHP :  5.6.38
 
@@ -196,9 +196,9 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
 INSERT INTO `etudiant` (`id_etu`, `id_promo`, `id_grpe`, `genre`, `nom`, `prenom`, `email`, `login_etu`, `pass_etu`, `matricule`, `date_etu`, `urlPhoto`, `bConnect`) VALUES
 (1, 1, 1, 'Melle', 'Dahmani', 'Djaouida', 'ddahmani@parisdescartes.fr', 'ddahmani', '098f6bcd4621d373cade4e832627b4f6', '12345678', '2018-09-10', '', 0),
 (2, 1, 1, 'M', 'Karl', 'Bernard', 'bernard.karl@parisdescartes.fr', 'bkarl', '098f6bcd4621d373cade4e832627b4f6', '40004000', '2018-09-10', '', 0),
-(3, 1, 2, 'Melle', 'Mozart', 'Lea', 'lea.mozart@parisdescartes.fr', 'lmozart', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 1),
+(3, 1, 2, 'Melle', 'Mozart', 'Lea', 'lea.mozart@parisdescartes.fr', 'lmozart', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (4, 1, 4, 'M', 'Vincens', 'Bernard', 'bernard.vincens@parisdescartes.fr', 'bvincens', '098f6bcd4621d373cade4e832627b4f6', '12345678', '2018-09-10', '', 0),
-(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', './userdata/profile_pictures/alauzanne_2018_11_05_17_24_36.jpg', 0),
+(5, 1, 5, 'M', 'Lauzanne', 'Alain', 'alauzanne@parisdescartes.fr', 'alauzanne', '098f6bcd4621d373cade4e832627b4f6', '22345678', '2018-09-10', '', 0),
 (6, 1, 6, 'Melle', 'Rey', 'Annie', 'arey@parisdecartes.fr', 'arey', '098f6bcd4621d373cade4e832627b4f6', '32345678', '2018-09-10', '', 0),
 (7, 1, 6, 'M', 'Tao', 'Minh', 'mtao@parisdescartes.fr', 'mtao', '098f6bcd4621d373cade4e832627b4f6', '10001000', '2018-09-10', '', 0),
 (8, 1, 7, 'M', 'Berger', 'Paul', 'pberger@parisdescartes.fr', 'pberger', '098f6bcd4621d373cade4e832627b4f6', '70000000', '2018-09-10', '', 0),
@@ -351,41 +351,19 @@ CREATE TABLE IF NOT EXISTS `message` (
   `id_dest` int(11) NOT NULL,
   `contenu` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id_msg`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `message`
 --
 
 INSERT INTO `message` (`id_msg`, `typeMsg`, `id_src`, `id_dest`, `contenu`) VALUES
-(17, 1, 3, 2, 'Bonjour, comment allez-vous ?'),
-(20, 1, 2, 3, 'salut mon gars'),
-(21, 1, 3, 2, 'bien ou quoi rezouanne ?'),
-(22, 1, 2, 3, 'trkl'),
-(23, 1, 2, 3, 'sava\r\n'),
-(24, 1, 3, 2, 'c toi rezouanne ?'),
-(25, 1, 2, 3, 'oui\r\n'),
-(26, 1, 3, 2, 'mdr'),
-(27, 1, 2, 3, 'comment ta fait le truc avec l\'animation'),
-(28, 1, 2, 3, '?'),
-(29, 1, 3, 2, 'c\'est une ligne de javascript'),
-(30, 1, 2, 3, 'Ah non c\'est juste un refresh et le truc qui descent'),
-(31, 1, 3, 2, 'c\'est : window.onload=function (){\r\n			var div = document.getElementById(\'chat\');\r\n			$(\'#\' + \'chat\').animate({\r\n      scrollTop: div.scrollHeight - div.clientHeight\r\n   }, 500);\r\n		}'),
-(32, 1, 2, 3, 'bon vazy je joue a fortnite'),
-(33, 1, 3, 2, 'mdr vasy'),
-(34, 1, 3, 2, 'mais en vrai c bien cheum de devoir refresh à chaque fois'),
-(35, 1, 5, 2, 'salut !'),
-(36, 1, 5, 2, 'comment ça va ?'),
-(37, 1, 5, 2, 'coucou \r\n'),
-(38, 1, 2, 5, 'slt'),
-(39, 1, 5, 2, 'ca marche\r\n'),
-(40, 1, 3, 2, 'Hey! Salut!\r\n'),
-(41, 1, 5, 3, 'facho'),
-(42, 1, 3, 5, 'Test'),
-(43, 1, 2, 5, 'nickel'),
-(44, 1, 2, 3, 'grave bave bave baveba veabveab eravrb\r\n'),
-(45, 1, 2, 3, 'fgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nfgh njffhg gv\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n'),
-(46, 1, 2, 3, 'a\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\naa\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\naa\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\naa\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\naa\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\naa\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na\r\na');
+(47, 1, 2, 3, 'Bonjour Karim !'),
+(48, 1, 3, 2, 'salut jean-mi'),
+(49, 1, 3, 2, 'Comment ça va ?'),
+(50, 1, 2, 3, 'Ca va super et toi ?'),
+(51, 1, 2, 3, 'tu n\'as pas oublié de mettre une bonne note à ce projet ;) ?'),
+(52, 1, 3, 2, 'on verra :)');
 
 -- --------------------------------------------------------
 
@@ -415,13 +393,13 @@ CREATE TABLE IF NOT EXISTS `prof` (
 --
 
 INSERT INTO `prof` (`id_prof`, `genre`, `nom`, `prenom`, `email`, `label`, `login_prof`, `pass_prof`, `date_prof`, `urlPhoto`, `couleur`, `bConnect`) VALUES
-(2, 'M', 'Ilié', 'Jean-Michel', 'jmilie@parisdescartes.fr', 'JMI', 'jmilie', '098f6bcd4621d373cade4e832627b4f6', '2018-09-12', './userdata/profile_pictures/jmilie_2018_11_05_16_51_31.png', '#ff80ab', 0),
-(3, 'M', 'Foughali', 'Karim', 'kfoughali@gmail.com', 'KF', 'kfoughali', '098f6bcd4621d373cade4e832627b4f6', '2018-01-12', '', '#82b1ff', 0),
-(4, 'M', 'Kurtz', 'Camille', 'ckurtz@parisdescartes.fr', 'CK', 'ckurtz', '098f6bcd4621d373cade4e832627b4f6', '2018-09-09', '', '#1de9b6', 1),
-(5, 'M', 'Sortais', 'Michel', 'msortais@parisdescartes.fr', 'MS', 'msortais', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '#00e676', 0),
+(2, 'M', 'Ilié', 'Jean-Michel', 'jmilie@parisdescartes.fr', 'JMI', 'jmilie', '098f6bcd4621d373cade4e832627b4f6', '2018-09-12', '', '#ff8a80', 0),
+(3, 'M', 'Foughali', 'Karim', 'kfoughali@gmail.com', 'KF', 'kfoughali', '098f6bcd4621d373cade4e832627b4f6', '2018-01-12', '', '#8c9eff', 0),
+(4, 'M', 'Kurtz', 'Camille', 'ckurtz@parisdescartes.fr', 'CK', 'ckurtz', '098f6bcd4621d373cade4e832627b4f6', '2018-09-09', '', '', 0),
+(5, 'M', 'Sortais', 'Michel', 'msortais@parisdescartes.fr', 'MS', 'msortais', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (6, 'M', 'Ouziri', 'Mourad', 'mouziri@parisdescartes.fr', 'MO', 'mouziri', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (7, 'Mme', 'Dirani', 'Hélène', 'hdirani@parisdescartes.fr', 'HD', 'hdirani', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
-(8, 'M', 'Poitrenaud', 'Denis', 'dpoitrenaud', 'DP', 'dpoitrenaud', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '#ffab40', 0),
+(8, 'M', 'Poitrenaud', 'Denis', 'dpoitrenaud', 'DP', 'dpoitrenaud', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (9, 'Mme', 'Marechal', 'Laurence', 'lmarechal@parisdescartes.fr', 'LM', 'lmarechal', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (10, 'M', 'Oliviero', 'Philippe', 'poliviero@parisdescartes.fr', 'PhO', 'poliviero', '098f6bcd4621d373cade4e832627b4f6', '2018-09-10', '', '', 0),
 (255, 'M', 'test', 'test', 'test@test.com', 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', '2018-10-02', '', '', 0);
@@ -441,7 +419,7 @@ CREATE TABLE IF NOT EXISTS `prof_roles` (
   `id_prof` int(11) NOT NULL,
   `label` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `prof_roles`

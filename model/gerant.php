@@ -1,5 +1,25 @@
 <?php
 
+function getAllMatiere(&$matieres)
+{
+    require './model/connectBD.php';
+    $sql = "SELECT * FROM matiere ORDER BY id_mat ASC";
+    try {
+        $commande = $pdo->prepare($sql);
+        $commande->bindParam(':idMat', $idMat);
+        $bool     = $commande->execute();
+        $resultat = array();
+        if ($bool) {
+            $resultat = $commande->fetchAll(PDO::FETCH_ASSOC);
+        }
+    } catch (PDOException $e) {
+        echo utf8_encode('Echec de la requête: ' . $e->getMessage() . '\n');
+        die(); // On arrête tout.
+    }
+    $matieres = $resultat;
+    return $bool;
+}
+
 function getAllCreneaux($idMat)
 {
     require './model/connectBD.php';
@@ -61,7 +81,9 @@ function updateLabel($idMat, $newLabel)
 function getMatiere($idMat)
 {
     require './model/connectBD.php';
-    $sql = "SELECT * FROM matiere WHERE id_mat=:idMat";
+    $sql = "SELECT *
+            FROM matiere
+            WHERE id_mat=:idMat";
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idMat', $idMat);

@@ -3,7 +3,7 @@
 function loadRoleResp($idProf, &$roles)
 {
     require './model/connectBD.php';
-    $sql = "SELECT * FROM prof_roles P INNER JOIN matiere M ON M.id_mat = P.id_objet WHERE id_prof=:idProf AND bResp = 1";
+    $sql = "SELECT * FROM prof_roles P WHERE id_prof=:idProf AND bResp = 1";
     try {
         $commande = $pdo->prepare($sql);
         $commande->bindParam(':idProf', $idProf);
