@@ -25,7 +25,7 @@
 						<dt class="col-sm-3">Date d'inscription :</dt>
 						<dd class="col-sm-9"><?= $_SESSION['profile']['date_etu']?></dd>
 						<dt class="col-sm-3">Image :</dt>
-						<dd class="col-sm-9"><img class="mt-1 rounded shadow" style="object-fit: cover;" src=<?= $_SESSION['profile']["urlPhoto"]== ''? ($_SESSION['profile']["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $_SESSION['profile']["urlPhoto"] ;?> width="100px" height="100px"></dd>
+						<dd class="col-sm-9"><img class="mt-1 rounded shadow" style="object-fit: cover;" src=<?= $_SESSION['profile']["urlPhoto"]== ''? ($_SESSION['profile']["genre"]=="M" ?"./resources/default_avatars/male.png": "./resources/default_avatars/female.png"): $_SESSION['profile']["urlPhoto"] ;?> width="100" height="100" alt="avatar"></dd>
 					</dl>
 					<div class="card-deck">
 						<div class="card">

@@ -13,7 +13,21 @@ function load()
 
 function loadCreneaux()
 {
-
+    require './model/professeur_resp.php';
+    require './model/professeur.php';
+    loadRoleResp($_SESSION['profile']['id_prof'], $roles);
+    $_SESSION['profile']['roles'] = $roles;
+    getSalles($salles);
+    for ($i = 0; $i < count($roles); $i++) {
+        $roles[$i]["creneaux"] = getAllCreneaux($roles[$i]['id_mat']);
+    }
     $chemin = './view/professeur_resp/gestionCreneaux.tpl';
     require './view/layout.tpl';
+}
+
+function loadMajLabel()
+{
+    require './model/professeur_resp.php';
+    updateLabel($_GET['id_mat'], $_GET['newLabel']);
+    header('Location:./index.php?controle=professeur_resp&action=load&subaction=Creneaux');
 }

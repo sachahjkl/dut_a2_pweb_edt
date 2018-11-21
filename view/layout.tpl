@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html lang="fr">
+	<head >
 		<title>EDT</title>
 		<meta charset='utf-8'>
 		<script src="./bootstrap/jquery/jquery-3.3.1.min.js"></script>
