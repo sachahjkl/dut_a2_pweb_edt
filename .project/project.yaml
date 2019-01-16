@@ -1,0 +1,8 @@
+name: "dut_a2_pweb_edt"
+description: "trop cool"
+topics: []
+homepage: ""
+source:
+  provider: gitlab
+  namespace: "dut_a2_pweb_edt"
+  path: "dut_a2_pweb_edt/dut_a2_pweb_edt"
